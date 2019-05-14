@@ -1,33 +1,28 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const plugins = require('./plugins')
+const { resolve } = require('./utils')
+const jsRules = require('./jsRules')
+const styleRules = require('./styleRules')
+const optimization = require('./optimization')
 
 module.exports = {
   /*入口*/
-  entry: path.join(__dirname, '../src/index.tsx'),
+  entry: resolve('../src/index.tsx'),
   
   /*输出到dist目录，输出文件名字为bundle.js*/
   output: {
-      path: path.join(__dirname, '../dist'),
-      filename: '[name].js'
+      path: resolve('../dist'),
+      filename: 'js/[name].js'
   },
   module: {
-    rules: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { 
-        test: /\.tsx?$/, 
-        loader: "ts-loader" 
-      }
-    ]
+    rules: [...jsRules, ...styleRules]
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', 'jsx']
+    extensions: ['.ts', '.tsx', '.js', 'jsx'],
+    alias: {
+      '@': resolve('../src'),
+      '@components': resolve('../src/components')
+    }
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      // 以哪个文件为模板，模板路径
-      template: "public/index.html",
-      // 编译后的文件名
-      filename: "index.html"
-    })
-  ]
+  plugins: [...plugins],
+  optimization
 };
