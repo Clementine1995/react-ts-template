@@ -4,11 +4,8 @@ module.exports = {
     "plugin:react/recommended"
   ],
   parserOptions: {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "ecmaVersion": 2019,
+    "sourceType": "module"
   },
   env: {
     node: true,
@@ -24,6 +21,12 @@ module.exports = {
     //
     // React: false,
     // ReactDOM: false
+  },
+  settings: {
+    react: {
+        pragma: "React",
+        version: "detect"
+    }
   },
   rules: {
     // 这里填入你的项目需要的个性化配置，比如：
