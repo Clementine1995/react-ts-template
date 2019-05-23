@@ -1,7 +1,7 @@
-const APP_ENV = process.env.NODE_ENV || 'prod'
-const FILE_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx']
+const argv = require('yargs-parser')(process.argv.slice(4))
+const APP_ENV = argv.env || 'dev'
 
-console.log(process.env)
+const FILE_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx']
 
 module.exports = {
     APP_ENV,

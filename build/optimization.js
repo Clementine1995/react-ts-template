@@ -4,7 +4,7 @@ const config = require('./config')
 const constants = require('./constants')
 
 module.exports =
-  constants.APP_ENV === 'development' ?
+  constants.APP_ENV === 'dev' ?
   {} :
   {
     runtimeChunk: {

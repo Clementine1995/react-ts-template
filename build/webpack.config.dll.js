@@ -8,7 +8,7 @@ const {
 module.exports = {
   mode:'production',
   entry: {
-    vendor: ['@babel/polyfill', 'react', 'react-dom', 'react-router-dom']
+    vendor: ['react', 'react-dom', 'react-router-dom']
   },
   output: {
     filename: '[name].dll.[hash:8].js',
@@ -19,7 +19,9 @@ module.exports = {
     library: '_dll_[name]_[hash:8]'
   },
   plugins: [
-    new CleanWebpaclPlugin(['../dll']),
+    new CleanWebpaclPlugin({
+      cleanOnceBeforeBuildPatterns: [resolve(process.cwd(), '../dll/**/*')]
+    }),
     new webpack.DllPlugin({
       // path 指定manifest文件的输出路径
       path: resolve('../dll/[name].manifest.json'),
