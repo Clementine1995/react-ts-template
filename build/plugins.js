@@ -33,6 +33,7 @@ const devPlugins = [
 		template: 'public/index.html',
 		inject: true
 	}),
+	new webpack.HotModuleReplacementPlugin()
 ]
 
 const prodPlugins = [
