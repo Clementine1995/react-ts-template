@@ -1,3 +1,4 @@
+const config = require('./config')
 const plugins = require('./plugins')
 const { resolve } = require('./utils')
 const jsRules = require('./jsRules')
@@ -13,6 +14,7 @@ module.exports = {
       path: resolve('../dist'),
       filename: 'js/[name].js'
   },
+  devtool: config.sourceMap,
   devServer: {
     host: 'localhost',
     port: 3000,
