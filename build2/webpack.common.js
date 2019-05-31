@@ -1,85 +1,122 @@
-const path = require('path')
-const htmlWebpackPlugin = require('html-webpack-plugin')
-const cleanWebpackPlugin = require('clean-webpack-plugin')
+const config = require('./config')
+const { assetsPath, resolve } = require('./utils')
+const theme = require('./theme')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const env = require('./env.json')
+const oriEnv = env[config.APP_ENV]
+Object.assign(oriEnv, {
+	APP_ENV: config.APP_ENV
+})
+
+const defineEnv = {}
+for (let key in oriEnv) {
+	defineEnv[`process.env.${key}`] = JSON.stringify(oriEnv[key])
+}
+
 
 module.exports={
-  entry: {
-    main: './src/index.js'
-  },
+  entry: resolve('../src/index.tsx'),
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname,'dist')
+    filename: 'js/[name].js',
+    path: resolve('../dist')
   },
   module: {
     rules:[
       {
-        test: /\.(png|jpg|gif)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            name: '[name].[ext]', 
-            outputPath: 'images/', 
-            limit: 2048           
+        test: /\.(j|t)sx?$/,
+        include: [resolve('../src')],
+        use: [
+          {
+            loader: 'babel-loader'
           }
-        }
+        ],
+        exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        use:[
-          'style-loader',
-          'css-loader',
-          'postcss-loader' 
-        ]
+        test: /\.css$/, // 正则匹配文件路径
+        exclude: /node_modules/,
+        use: [
+          config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader', // 解析 @import 和 url() 为 import/require() 方式处理
+            options: {
+              importLoaders: 1 // 0 => 无 loader(默认); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+            }
+          },
+          'postcss-loader'
+        ],
       },
       {
         test: /\.scss$/,
-        use:[
-          'style-loader',
+        include: resolve('../src'),
+        use: [
+          config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
           {
-            loader: 'css-loader',
+            loader: 'sass-loader',
             options: {
-              importLoaders: 2,
-              modules: true 
+              includePaths: [resolve('../src/styles')]
             }
-          },
-          'sass-loader',
-          'postcss-loader'
+          }
         ]
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        // for ant design
+        test: /\.less$/,
+        include: resolve('../node_modules'),
+        use: [
+          config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
+          // {
+          //   loader: 'css-loader',
+          //   options: { localIdentName: '[name]__[local]--[hash:base64:5]' }
+          // },
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+              modifyVars: theme
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use: [
+          {
+          loader: 'url-loader',
+          options: {
+            //1024 == 1kb  
+            //小于20kb时打包成base64编码的图片否则单独打包成图片
+            limit: 10240,
+            name: assetsPath('img/[name].[hash:7].[ext]')
+          }
+        }]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            //1024 == 1kb  
+            //小于20kb时打包成base64编码的图片否则单独打包成图片
+            limit: 10240,
+            name: assetsPath('font/[name].[hash:7].[ext]')
+          }
+        }]
       }
     ]
   },
-  optimization: { // 性能配置
-    runtimeChunk: true, // 开启 manifest 缓存，每个入口单独创建
-    splitChunks: {
-        chunks: 'async', // 提取的 chunk 类型，all: 所有，async: 异步，initial: 初始
-        // minSize: 30000, // 默认值，新 chunk 产生的最小限制 整数类型（以字节为单位）
-        // maxSize: 0, // 默认值，新 chunk 产生的最大限制，0为无限 整数类型（以字节为单位）
-        // minChunks: 1, // 默认值，新 chunk 被引用的最少次数
-        // maxAsyncRequests: 5, // 默认值，按需加载的 chunk，最大数量
-        // maxInitialRequests: 3, // 默认值，初始加载的 chunk，最大数量
-        // name: true, // 默认值，控制 chunk 的命名
-        cacheGroups: { // 配置缓存组
-            vendor: {
-                name: 'vendor',
-                chunks: 'initial',
-                priority: 20, // 优先级
-                reuseExistingChunk: false, // 允许复用已经存在的代码块
-                test: /node_modules\/(.*)\.js/,
-            },
-            common: {
-                name: 'common',
-                chunks: 'initial',
-                minChunks: 2,
-                priority: 10,
-                reuseExistingChunk: true
-            }
-        },
-    },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', 'jsx'],
+    alias: {
+      '@': resolve('../src'),
+      "@ant-design/icons/lib/dist$": resolve('../src/icons.ts'),
+      '@components': resolve('../src/components')
+    }
   },
   performance: { // 性能提示，可以提示过大文件
     hints: "warning", // 性能提示开关 false | "error" | "warning"
@@ -91,9 +128,6 @@ module.exports={
     }
   },
   plugins: [
-    new htmlWebpackPlugin({
-      template: 'public/index.html'
-    }),
-    new cleanWebpackPlugin(),
+    new webpack.DefinePlugin(defineEnv)
   ]
 }

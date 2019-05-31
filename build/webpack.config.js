@@ -23,18 +23,17 @@ module.exports = {
       errors: true
     },
     inline: true,
-    open: true,
     hot: true,
-    proxy: {
-      '/api/v1': {
-        target: '',
-        ws: true,
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api/v1': '/api/v1'
-        }
-      }
-    }
+    // proxy: {
+    //   '/api/v1': {
+    //     target: '',
+    //     ws: true,
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api/v1': '/api/v1'
+    //     }
+    //   }
+    // }
   },
   module: {
     rules: [...jsRules, ...styleRules]

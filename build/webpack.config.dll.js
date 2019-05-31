@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const CleanWebpaclPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const {
   resolve
 } = require('./utils')
@@ -19,7 +19,7 @@ module.exports = {
     library: '_dll_[name]_[hash:8]'
   },
   plugins: [
-    new CleanWebpaclPlugin({
+    new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [resolve(process.cwd(), '../dll/**/*')]
     }),
     new webpack.DllPlugin({
