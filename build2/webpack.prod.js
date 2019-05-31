@@ -1,19 +1,23 @@
 const merge = require('webpack-merge')
 const config = require('./config')
-const baseConfig=require('./webpack.common')
+const baseConfig = require('./webpack.common')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { assetsPath, resolve } = require('./utils')
+const {
+  CleanWebpackPlugin
+} = require('clean-webpack-plugin')
+const {
+  assetsPath,
+  resolve
+} = require('./utils')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const DLL_PATH = '../dll'
 
-const prodConfig={
-  mode: 'production', 
+const prodConfig = {
+  mode: 'production',
   devtool: 'source-map',
   optimization: { // 性能配置
     runtimeChunk: true, // 开启 manifest 缓存，每个入口单独创建
@@ -97,9 +101,13 @@ const prodConfig={
       // both options are optional
       filename: assetsPath('css/[name].[contenthash].css'),
       chunkFilename: assetsPath('css/[name].[id].[contenthash].css')
-    }),
-    new BundleAnalyzerPlugin({ analyzerPort: 8081 })
+    })
   ]
 }
 
-module.exports=merge(baseConfig,prodConfig)
+if (config.bundleAnalyzerReport) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  prodConfig.plugins.push(new BundleAnalyzerPlugin())
+}
+
+module.exports = merge(baseConfig, prodConfig)
