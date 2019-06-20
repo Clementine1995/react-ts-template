@@ -14,7 +14,10 @@ module.exports = {
     es6: true
   },
   parser: '@typescript-eslint/parser',
-  plugins: ["@typescript-eslint"],
+  plugins: [
+    "@typescript-eslint",
+    "react-hooks"
+  ],
   globals: {
     // 这里填入你的项目需要的全局变量
     // 这里值为 false 表示这个全局变量不允许被重新赋值，比如：
@@ -48,6 +51,8 @@ module.exports = {
     'typescript/member-delimiter-style': 'off',
     'react/jsx-indent-props': 'off',
     'react/no-did-update-set-state': 'off',
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     indent: [
       'off',
       2,
