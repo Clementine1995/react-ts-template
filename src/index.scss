@@ -2,7 +2,7 @@
 @import 'var.scss';
 
 .app{  
-  background: $red;
+  // background: $red;
   .aps {
     width: 50px;
     @include ellipsis;
