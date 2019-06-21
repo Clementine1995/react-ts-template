@@ -11,6 +11,7 @@ module.exports = {
     '@babel/preset-react'
   ],
   plugins: [
+    // ["@babel/plugin-transform-runtime", {"corejs": 3}],
     ['import', { 
       libraryName: 'antd',
       libraryDirectory: 'lib',
