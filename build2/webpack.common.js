@@ -54,6 +54,7 @@ module.exports={
         use: [
           config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
+          'postcss-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -90,7 +91,7 @@ module.exports={
           loader: 'url-loader',
           options: {
             //1024 == 1kb  
-            //小于20kb时打包成base64编码的图片否则单独打包成图片
+            //小于10kb时打包成base64编码的图片否则单独打包成图片
             limit: 10240,
             name: assetsPath('img/[name].[hash:7].[ext]')
           }
@@ -102,7 +103,6 @@ module.exports={
           loader: 'url-loader',
           options: {
             //1024 == 1kb  
-            //小于20kb时打包成base64编码的图片否则单独打包成图片
             limit: 10240,
             name: assetsPath('font/[name].[hash:7].[ext]')
           }
@@ -115,7 +115,8 @@ module.exports={
     alias: {
       '@': resolve('../src'),
       "@ant-design/icons/lib/dist$": resolve('../src/icons.ts'),
-      '@components': resolve('../src/components')
+      '@components': resolve('../src/components'),
+      '_img': resolve('../src/assets/img')
     }
   },
   performance: { // 性能提示，可以提示过大文件

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#7EA7FF" offset="0%"></stop>
+            <stop stop-color="#6F66FD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="门户" transform="translate(-86.000000, -167.000000)">
+            <g id="侧导航" transform="translate(0.000000, 90.000000)">
+                <g id="Group-11" transform="translate(86.000000, 77.000000)">
+                    <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="60" height="60" rx="16"></rect>
+                    <g id="Group-10" transform="translate(12.000000, 12.000000)">
+                        <g transform="translate(2.000000, 2.000000)">
+                            <rect id="Rectangle" fill="#FFFFFF" opacity="0.5" x="20" y="10" width="12" height="22" rx="4"></rect>
+                            <path d="M24,3 L24,28 C24,30.209139 25.790861,32 28,32 L8,32 C3.581722,32 5.41083001e-16,28.418278 0,24 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 L21,0 L21,3 L24,3 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                            <circle id="Oval" fill="#FFFFFF" cx="21" cy="3" r="3"></circle>
+                            <rect id="Rectangle-Copy-7" fill="#7B9AFF" x="6" y="8" width="12" height="3" rx="1.5"></rect>
+                            <rect id="Rectangle-Copy-8" fill="#7B9AFF" x="6" y="15" width="12" height="3" rx="1.5"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

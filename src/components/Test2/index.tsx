@@ -24,6 +24,7 @@ function Test2() {
         Show alert
       </button>
       <br/>
+      <img src={require('_img/test.svg')} alt=""/>
       {/* <Counter /> */}
     </div>
   )
