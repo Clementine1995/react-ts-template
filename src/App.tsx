@@ -10,7 +10,7 @@ class App extends React.Component {
   
   
   render() {
-
+    console.log(process.env.BASEURL)
     return (
       <div className="app">
         <Router>

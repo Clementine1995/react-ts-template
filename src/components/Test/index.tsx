@@ -14,7 +14,7 @@ class Test extends React.Component {
 }
 
 function log(target: any) {
-  console.log(target)
+  // console.log(target)
 }
 
 export default Test

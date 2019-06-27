@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [resolve(process.cwd(), '../dll/**/*')]
+      cleanOnceBeforeBuildPatterns: [resolve('../dll/**/*')]
     }),
     new webpack.DllPlugin({
       // path 指定manifest文件的输出路径

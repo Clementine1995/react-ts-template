@@ -1,9 +1,10 @@
 import * as React from 'react'
+import './index.scss'
 
 class Home extends React.Component{
   render () {
     return (
-      <div>Here is the Home page</div>
+      <div className="home">Here is the Home page</div>
     )
   }
 }
