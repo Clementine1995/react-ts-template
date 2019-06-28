@@ -14,6 +14,7 @@ const {
 } = require('./utils')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin")
 const DLL_PATH = '../dll'
 
 const prodConfig = {
@@ -21,6 +22,7 @@ const prodConfig = {
   devtool: 'source-map',
   optimization: { // 性能配置
     runtimeChunk: true, // 开启 manifest 缓存，每个入口单独创建
+    moduleIds: 'hashed',
     splitChunks: {
       chunks: 'async', // 提取的 chunk 类型，all: 所有，async: 异步，initial: 初始
       // minSize: 30000, // 默认值，新 chunk 产生的最小限制 整数类型（以字节为单位）
@@ -33,15 +35,16 @@ const prodConfig = {
         vendor: {
           name: 'vendor',
           chunks: 'initial',
-          priority: 20, // 优先级
+          priority: 10, // 优先级
           reuseExistingChunk: false, // 允许复用已经存在的代码块
           test: /node_modules\/(.*)\.js/,
         },
         common: {
           name: 'common',
           chunks: 'initial',
+          // test: resolve("src/components"), // 可自定义拓展你的规则
           minChunks: 2,
-          priority: 10,
+          priority: 5,
           reuseExistingChunk: true
         }
       },
@@ -95,6 +98,10 @@ const prodConfig = {
     new AddAssetHtmlPlugin({
       filepath: resolve(`${DLL_PATH}/**/*.js`),
       includeSourcemap: false
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      //`runtime` must same as runtimeChunk name. default is `runtime`
+      inline: /runtime\..*\.js$/
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
