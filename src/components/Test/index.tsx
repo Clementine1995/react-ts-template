@@ -1,9 +1,11 @@
+/** @format */
+
 import * as React from 'react'
-import {Button} from 'antd'
+import { Button } from 'antd'
 
 @log
 class Test extends React.Component {
-  render () {
+  render() {
     return (
       <div>
         <p>this is a test component</p>

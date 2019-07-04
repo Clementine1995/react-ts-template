@@ -1,14 +1,14 @@
+/** @format */
+
 import * as React from 'react'
 import Test from '@components/Test'
-import { HashRouter as Router, Route, Link } from "react-router-dom"
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import loadable from '@loadable/component'
 
 const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ './views/Home'))
 const AboutComponent = loadable(() => import(/* webpackChunkName: "about" */ './views/About'))
 
 class App extends React.Component {
-  
-  
   render() {
     console.log(process.env.BASEURL)
     return (
@@ -22,8 +22,8 @@ class App extends React.Component {
               <Link to="/about">To About</Link>
             </li>
           </ul>
-          <Route exact path='/' component={HomeComponent}></Route>
-          <Route path='/about' component={AboutComponent}></Route>
+          <Route exact path="/" component={HomeComponent}></Route>
+          <Route path="/about" component={AboutComponent}></Route>
         </Router>
         <p className="aps">hahahaahhahhahahaha</p>
         <Test />

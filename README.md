@@ -6,4 +6,5 @@ React + Typescript项目模板
 2. babel7
 3. eslint
 4. antd
-5. 还有一些东西
+5. prettier
+6. 还有一些东西

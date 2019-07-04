@@ -1,3 +1,5 @@
+/** @format */
+
 const merge = require('webpack-merge')
 const config = require('./config')
 const baseConfig = require('./webpack.common')
@@ -5,22 +7,18 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin')
-const {
-  assetsPath,
-  resolve
-} = require('./utils')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { assetsPath, resolve } = require('./utils')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin")
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const DLL_PATH = '../dll'
 
 const prodConfig = {
   mode: 'production',
   devtool: 'source-map',
-  optimization: { // 性能配置
+  optimization: {
+    // 性能配置
     runtimeChunk: true, // 开启 manifest 缓存，每个入口单独创建
     moduleIds: 'hashed',
     splitChunks: {
@@ -31,13 +29,14 @@ const prodConfig = {
       // maxAsyncRequests: 5, // 默认值，按需加载的 chunk，最大数量
       // maxInitialRequests: 3, // 默认值，初始加载的 chunk，最大数量
       // name: true, // 默认值，控制 chunk 的命名
-      cacheGroups: { // 配置缓存组
+      cacheGroups: {
+        // 配置缓存组
         vendor: {
           name: 'vendor',
           chunks: 'initial',
           priority: 10, // 优先级
           reuseExistingChunk: false, // 允许复用已经存在的代码块
-          test: /node_modules\/(.*)\.js/,
+          test: /node_modules\/(.*)\.js/
         },
         common: {
           name: 'common',
@@ -47,7 +46,7 @@ const prodConfig = {
           priority: 5,
           reuseExistingChunk: true
         }
-      },
+      }
     },
     minimizer: [
       new TerserPlugin({

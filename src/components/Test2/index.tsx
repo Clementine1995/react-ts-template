@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect, useRef } from 'react'
 
 function Test2() {
@@ -16,16 +18,14 @@ function Test2() {
   }
   return (
     <div>
-      <p>You clicked {count} times , before: {prevCount}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-      <button onClick={handleAlertClick}>
-        Show alert
-      </button>
-      <br/>
-      <img src={require('_img/test.svg')} alt=""/>
-      {/* <Counter /> */}
+      <p>
+        You clicked {count} times , before: {prevCount}
+      </p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={handleAlertClick}>Show alert</button>
+      <br />
+      <img src={require('_img/test.svg')} alt="" />
+      <Counter />
     </div>
   )
 }
