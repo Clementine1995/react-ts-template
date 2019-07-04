@@ -20,7 +20,7 @@ for (let key in oriEnv) {
 module.exports = {
   entry: resolve('../src/index.tsx'),
   output: {
-    filename: 'js/[name].[chunkhash].js',
+    filename: `js/[name].[${config.isHash}].js`,
     path: resolve('../dist')
   },
   module: {

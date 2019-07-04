@@ -12,6 +12,7 @@ module.exports = {
   // assetsRoot: path.resolve(__dirname, `./../dist/${constants.APP_ENV}`),
   assetsPublicPath: APP_ENV === 'dev' ? '/' : `${STATICDOMAIN}/`,
   assetsSubDirectory: '',
+  isHash: APP_ENV === 'dev' ? 'hash' : 'chunkhash',
   // page Pattern for workbox
   // pagePattern: new RegExp(DOMAIN),
   // id you use CDN, change it!!!
