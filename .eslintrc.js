@@ -1,12 +1,10 @@
 module.exports = {
-  // extends: [
-  //   "eslint:recommended",
-  //   "plugin:react/recommended"
-  // ],
   extends:[ 
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    "prettier",
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended',
-    'plugin:react/recommended'
+    'plugin:prettier/recommended'
   ],
   parserOptions: {
     "ecmaVersion": 2019,
@@ -20,7 +18,7 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   plugins: [
-    "@typescript-eslint",
+    // "@typescript-eslint",
     "react-hooks"
   ],
   globals: {
@@ -38,7 +36,6 @@ module.exports = {
   },
   rules: {
     // 这里填入你的项目需要的个性化配置，比如：
-    //
     // // @fixable 一个缩进必须用两个空格替代
     semi: ['error', 'never'],
     'no-console': 'off',
@@ -58,6 +55,25 @@ module.exports = {
     'react/no-did-update-set-state': 'off',
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/interface-name-prefix": "always",
+    "@typescript-eslint/no-var-requires": "off",
+    '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'no-public' }],
+    '@typescript-eslint/explicit-function-return-type': [
+      // 'warn',
+      'off', 
+      {
+        allowExpressions: true, 
+        allowTypedFunctionExpressions: true,
+      }
+    ],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/camelcase': ['off', {properties: 'always'}],
+    '@typescript-eslint/no-unused-vars': ['error', {
+      'vars': 'all',
+      'args': 'none',
+      'ignoreRestSiblings': true,
+    }],
     indent: [
       'off',
       2,

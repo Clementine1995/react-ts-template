@@ -12,7 +12,7 @@
     "dll": "webpack --config build/webpack.config.dll.js",
     "dev2": "webpack-dev-server --config build2/webpack.dev.js --mode development --open",
     "build2": "webpack --config build2/webpack.prod.js --mode production --env test",
-    "lint": "eslint src --fix --ext .js --ext .ts,.tsx"
+    "lint": "eslint src --fix --ext .js,.ts,.tsx"
   },
   "repository": {
     "type": "git",

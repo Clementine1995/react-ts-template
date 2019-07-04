@@ -2,6 +2,14 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 
+function usePrevious(value: any) {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
+
 function Test2() {
   const [count, setCount] = useState(0)
   // 相当于 componentDidMount 和 componentDidUpdate:
@@ -41,14 +49,6 @@ function Counter() {
   }, []) // 🔴 Bug: `count` 没有被指定为依赖
 
   return <h1>{count}</h1>
-}
-
-function usePrevious(value: any) {
-  const ref = useRef()
-  useEffect(() => {
-    ref.current = value
-  })
-  return ref.current
 }
 
 export default Test2
