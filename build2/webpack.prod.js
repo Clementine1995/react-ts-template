@@ -12,6 +12,8 @@ const { assetsPath, resolve } = require('./utils')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+
+const workboxPlugin = require('workbox-webpack-plugin')
 const DLL_PATH = '../dll'
 
 const prodConfig = {
@@ -75,6 +77,16 @@ const prodConfig = {
       })
     ]
   },
+  performance: {
+    // 性能提示，可以提示过大文件
+    hints: 'warning', // 性能提示开关 false | "error" | "warning"
+    maxAssetSize: 100000, // 生成的文件最大限制 整数类型（以字节为单位）
+    maxEntrypointSize: 100000, // 引入的文件最大限制 整数类型（以字节为单位）
+    assetFilter: function(assetFilename) {
+      // 提供资源文件名的断言函数
+      return /\.(png|jpe?g|gif|svg)(\?.*)?$/.test(assetFilename)
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.DllReferencePlugin({
@@ -107,6 +119,15 @@ const prodConfig = {
       // both options are optional
       filename: assetsPath('css/[name].[contenthash].css'),
       chunkFilename: assetsPath('css/[name].[id].[contenthash].css')
+    }),
+    // new workboxPlugin.GenerateSW({
+    //   swDest: 'sw.js',
+    //   clientsClaim: true,
+    //   skipWaiting: true
+    //   // runtimeCaching: []
+    // }),
+    new workboxPlugin.InjectManifest({
+      swSrc: './src/sw.js'
     })
   ]
 }

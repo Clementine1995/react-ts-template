@@ -7,7 +7,8 @@ React + Typescript项目模板
 3. eslint
 4. antd
 5. prettier
-6. 还有一些东西
+6. pwa
+7. 还有一些东西
 
 VS code 校验配置
 
@@ -45,3 +46,7 @@ VS code 校验配置
   ]
 }
 ```
+
+## workbox相关
+
+[workbox-webpack 配置](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin)

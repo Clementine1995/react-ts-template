@@ -123,15 +123,5 @@ module.exports = {
       _img: resolve('../src/assets/img')
     }
   },
-  performance: {
-    // 性能提示，可以提示过大文件
-    hints: 'warning', // 性能提示开关 false | "error" | "warning"
-    maxAssetSize: 100000, // 生成的文件最大限制 整数类型（以字节为单位）
-    maxEntrypointSize: 100000, // 引入的文件最大限制 整数类型（以字节为单位）
-    assetFilter: function(assetFilename) {
-      // 提供资源文件名的断言函数
-      return /\.(png|jpe?g|gif|svg)(\?.*)?$/.test(assetFilename)
-    }
-  },
   plugins: [new webpack.DefinePlugin(defineEnv)]
 }
