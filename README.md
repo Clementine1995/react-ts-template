@@ -49,4 +49,6 @@ VS code 校验配置
 
 ## workbox相关
 
+[workbox官方文档](https://developers.google.com/web/tools/workbox/guides/get-started)
+
 [workbox-webpack 配置](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin)
