@@ -13,7 +13,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
-const workboxPlugin = require('workbox-webpack-plugin')
+// const workboxPlugin = require('workbox-webpack-plugin')
 const DLL_PATH = '../dll'
 
 const prodConfig = {
@@ -119,16 +119,16 @@ const prodConfig = {
       // both options are optional
       filename: assetsPath('css/[name].[contenthash].css'),
       chunkFilename: assetsPath('css/[name].[id].[contenthash].css')
-    }),
+    })
     // new workboxPlugin.GenerateSW({
     //   swDest: 'sw.js',
     //   clientsClaim: true,
     //   skipWaiting: true
     //   // runtimeCaching: []
     // }),
-    new workboxPlugin.InjectManifest({
-      swSrc: './src/sw.js'
-    })
+    // new workboxPlugin.InjectManifest({
+    //   swSrc: './src/sw.js'
+    // })
   ]
 }
 
