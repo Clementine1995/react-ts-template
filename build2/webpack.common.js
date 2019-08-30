@@ -13,7 +13,7 @@ Object.assign(oriEnv, {
 })
 
 const defineEnv = {}
-for (let key in oriEnv) {
+for (const key in oriEnv) {
   defineEnv[`process.env.${key}`] = JSON.stringify(oriEnv[key])
 }
 
@@ -59,7 +59,9 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [resolve('../src/styles')]
+              sassOptions: {
+                includePaths: [resolve('../src/styles')]
+              }
             }
           }
         ]

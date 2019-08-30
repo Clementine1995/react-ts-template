@@ -9,6 +9,8 @@ interface IState {
   testRef: React.RefObject<Carousel>
 }
 
+let timer: number | undefined = undefined
+
 class Home extends React.Component<{}, IState> {
   private testRef: React.RefObject<Carousel>
   constructor(props: any) {
@@ -19,10 +21,13 @@ class Home extends React.Component<{}, IState> {
   componentDidMount() {
     console.log(this.testRef.current!.innerSlider)
 
-    window.setInterval(() => {
+    timer = window.setInterval(() => {
       this.testRef.current!.innerSlider.play()
     }, 500)
     // this.testRef.innerSlider.autoplayTimer = 5
+  }
+  componentWillUnmount() {
+    window.clearInterval(timer)
   }
   render() {
     return (

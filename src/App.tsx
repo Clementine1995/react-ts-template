@@ -7,6 +7,7 @@ import loadable from '@loadable/component'
 
 const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ './views/Home'))
 const AboutComponent = loadable(() => import(/* webpackChunkName: "about" */ './views/About'))
+const OtherComponent = loadable(() => import(/* webpackChunkName: "other" */ './views/Other'))
 
 class App extends React.Component {
   render() {
@@ -21,11 +22,14 @@ class App extends React.Component {
             <li>
               <Link to="/about">To About</Link>
             </li>
+            <li>
+              <Link to="/other">To Other</Link>
+            </li>
           </ul>
           <Route exact path="/" component={HomeComponent}></Route>
+          <Route path="/other" component={OtherComponent}></Route>
           <Route path="/about" component={AboutComponent}></Route>
         </Router>
-        <p className="aps">hahahaahhahhahahahaa</p>
         <Test />
       </div>
     )
