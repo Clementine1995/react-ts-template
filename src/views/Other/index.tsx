@@ -1,12 +1,19 @@
 /** @format */
 
-import React, { useState, useMemo } from 'react'
-
-console.log(23424)
+import React, { useState, useMemo, useCallback } from 'react'
 
 function Other() {
   const [xiaohong, setXiaohong] = useState('小红的状态')
   const [zhiling, setZhiling] = useState('小刚的状态')
+
+  const [height, setHeight] = useState(0)
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height)
+    }
+  }, [])
+
   return (
     <>
       <button
@@ -22,13 +29,15 @@ function Other() {
         小刚
       </button>
       <ChildComponent name={xiaohong}>{zhiling}</ChildComponent>
+
+      <h1 ref={measuredRef}>Hello, world</h1>
+      <h2>The above header is {Math.round(height)}px tall</h2>
     </>
   )
 }
 
 function ChildComponent({ name, children }: any) {
-  function changeXiaohong(name) {
-    console.log('她来了，她来了。小红向我们走来了')
+  function changeXiaohong(name: any) {
     return name + ',小红向我们走来了'
   }
 
