@@ -1,4 +1,3 @@
-@import './styles/reset.css';
 @import 'var.scss';
 
 .app{  
@@ -6,5 +5,11 @@
   .aps {
     width: 50px;
     @include ellipsis;
+  }
+  .app-nav{
+    display: flex;
+  }
+  .app-nav__item{
+    margin-right: 20px;
   }
 }
