@@ -9,6 +9,11 @@ import mocks from './mock'
 
 // import 'react-dynamic-charts/dist/index.css'
 
+// 一次生成101条用于后面渲染的数据
+// helpers.generateData(100, mocks.defaultChart, {
+//   prefix: 'Iteration'
+// })
+
 export default class App extends Component {
   render() {
     return (
