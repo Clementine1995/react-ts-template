@@ -1,17 +1,26 @@
 /** @format */
 
-// https://juejin.im/post/5d565015f265da03eb13c575
+import React, { Component } from 'react'
 
-import React, { useState } from 'react'
-import { translateY, getRandomColor } from '../../libs/utils'
+import { DynamicBarChart } from './DynamicChart'
 
-const EzChart = props => {
-  const [dataQueue, setDataQueue] = useState([])
-  const [activeItemIdx, setActiveItemIdx] = useState(0)
-  const [highestValue, setHighestValue] = useState(0)
-  const [currentValues, setCurrentValues] = useState({})
-  const [firstRun, setFirstRun] = useState(false)
-  return <div></div>
+import helpers from './helpers'
+import mocks from './mock'
+
+// import 'react-dynamic-charts/dist/index.css'
+
+export default class App extends Component {
+  render() {
+    return (
+      <DynamicBarChart
+        barGapSize={10}
+        data={helpers.generateData(100, mocks.defaultChart, {
+          prefix: 'Iteration'
+        })}
+        iterationTimeout={100}
+        showTitle={true}
+        startRunningTimeout={2500}
+      />
+    )
+  }
 }
-
-export default EzChart

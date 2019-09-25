@@ -1,0 +1,68 @@
+.live-chart {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  h1 {
+    font-weight: 700;
+    font-size: 60px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px 10px;
+    margin: 0;
+  }
+
+  .chart {
+    position: relative;
+    margin: 20px auto;
+  }
+
+  .chart-bars {
+    position: relative;
+    width: 100%;
+  }
+  
+  .bar-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+    transition: transform 0.5s linear;
+    padding-left: 200px;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: flex-start;
+
+    label {
+      position: absolute;
+      height: 100%;
+      width: 200px;
+      left: 0;
+      padding: 0 10px;
+      box-sizing: border-box;
+      text-align: right;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .value {
+      font-size: 16px;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+
+    .bar {
+      width: 0%;
+      transition: width 0.5s linear;
+    }
+  }
+}
