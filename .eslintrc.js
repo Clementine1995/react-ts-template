@@ -3,11 +3,10 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     "prettier",
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
   ],
   parserOptions: {
-    "ecmaVersion": 2019,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   env: {
@@ -18,7 +17,7 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   plugins: [
-    // "@typescript-eslint",
+    "@typescript-eslint",
     "react-hooks"
   ],
   globals: {
