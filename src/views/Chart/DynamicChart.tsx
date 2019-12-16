@@ -26,7 +26,7 @@ const DynamicBarChart = props => {
   const [currentValues, setCurrentValues] = useState({}) // 经过处理后用于渲染的数据数组
   const [firstRun, setFirstRun] = useState(false) // 第一次动态渲染时间
 
-  let iterationTimeoutHolder = null // 定时器
+  let iterationTimeoutHolder: number | null = null // 定时器
   // 动态跑起来～
   function start() {
     if (activeItemIdx > 1) {
@@ -34,13 +34,6 @@ const DynamicBarChart = props => {
     }
     nextStep(true)
   }
-
-  // const start = useCallback(() => {
-  //   if (activeItemIdx > 1) {
-  //     return
-  //   }
-  //   nextStep(true)
-  // }, [activeItemIdx, nextStep])
 
   // 对下一帧数据进行处理
   function setNextValues() {
@@ -52,6 +45,12 @@ const DynamicBarChart = props => {
 
     //  每一帧的数据数组
     const roundData = dataQueue[activeItemIdx].values
+    // values: Array(5)
+    // 0: {id: 1, label: "Google", value: 97}
+    // 1: {id: 2, label: "Facebook", value: 108}
+    // 2: {id: 3, label: "Outbrain", value: 91}
+    // 3: {id: 4, label: "Apple", value: 50}
+    // 4: {id: 5, label: "Amazon", value: 133}
     const nextValues = {}
     let highestValue = 0
 
@@ -68,7 +67,14 @@ const DynamicBarChart = props => {
 
       return c
     })
-    console.table(highestValue)
+    console.log(nextValues)
+
+    // 1: {id: 1, label: "Google", value: 71, color: "#594ADF"}
+    // 2: {id: 2, label: "Facebook", value: 38, color: "#404771"}
+    // 3: {id: 3, label: "Outbrain", value: 102, color: "#4920EB"}
+    // 4: {id: 4, label: "Apple", value: 103, color: "#06E62A"}
+    // 5: {id: 5, label: "Amazon", value: 111, color: "#B29F10"}
+    // __proto__: Object
 
     // 属性的操作，触发useEffect
     // 连续触发多次state赋值，方法重新执行几次？

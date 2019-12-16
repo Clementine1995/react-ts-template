@@ -19,7 +19,7 @@ export default class App extends Component {
     return (
       <DynamicBarChart
         barGapSize={10}
-        data={helpers.generateData(100, mocks.defaultChart, {
+        data={helpers.generateData(1, mocks.defaultChart, {
           prefix: 'Iteration'
         })}
         iterationTimeout={100}
