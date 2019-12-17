@@ -2,11 +2,13 @@ module.exports = {
   extends:[ 
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    "prettier",
-    "prettier/@typescript-eslint",
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    "prettier/@typescript-eslint"
   ],
   parserOptions: {
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "ecmaVersion": 2020,
     "sourceType": "module"
   },

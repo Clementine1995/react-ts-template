@@ -2,7 +2,7 @@
 
 // https://juejin.im/post/5d565015f265da03eb13c575
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import PropTypes from 'prop-types'
 import './index.scss'
 
@@ -24,33 +24,30 @@ const DynamicBarChart = props => {
   const [activeItemIdx, setActiveItemIdx] = useState(0) // 第几“帧”
   const [highestValue, setHighestValue] = useState(0) // “榜首”的数据值
   const [currentValues, setCurrentValues] = useState({}) // 经过处理后用于渲染的数据数组
-  const [firstRun, setFirstRun] = useState(false) // 第一次动态渲染时间
+  // const [firstRun, setFirstRun] = useState(false) // 第一次动态渲染时间
 
-  let iterationTimeoutHolder: number | null = null // 定时器
+  const iterationTimeoutHolder = useRef(null)
+
+  // let iterationTimeoutHolder: number | null = null // 定时器
   // 动态跑起来～
   function start() {
     if (activeItemIdx > 1) {
       return
     }
-    nextStep(true)
+    setNextValues()
   }
 
   // 对下一帧数据进行处理
   function setNextValues() {
     // 没有帧数时（即已结束），停止渲染
     if (!dataQueue[activeItemIdx]) {
-      iterationTimeoutHolder = null
+      iterationTimeoutHolder.current = null
       return
     }
 
     //  每一帧的数据数组
     const roundData = dataQueue[activeItemIdx].values
-    // values: Array(5)
-    // 0: {id: 1, label: "Google", value: 97}
-    // 1: {id: 2, label: "Facebook", value: 108}
-    // 2: {id: 3, label: "Outbrain", value: 91}
-    // 3: {id: 4, label: "Apple", value: 50}
-    // 4: {id: 5, label: "Amazon", value: 133}
+
     const nextValues = {}
     let highestValue = 0
 
@@ -67,26 +64,12 @@ const DynamicBarChart = props => {
 
       return c
     })
-    console.log(nextValues)
-
-    // 1: {id: 1, label: "Google", value: 71, color: "#594ADF"}
-    // 2: {id: 2, label: "Facebook", value: 38, color: "#404771"}
-    // 3: {id: 3, label: "Outbrain", value: 102, color: "#4920EB"}
-    // 4: {id: 4, label: "Apple", value: 103, color: "#06E62A"}
-    // 5: {id: 5, label: "Amazon", value: 111, color: "#B29F10"}
-    // __proto__: Object
 
     // 属性的操作，触发useEffect
     // 连续触发多次state赋值，方法重新执行几次？
     setCurrentValues(nextValues)
     setHighestValue(highestValue)
     setActiveItemIdx(activeItemIdx + 1)
-  }
-
-  // 触发下一步，循环
-  function nextStep(firstRun = false) {
-    setFirstRun(firstRun)
-    setNextValues()
   }
 
   // 取原始数据
@@ -101,10 +84,11 @@ const DynamicBarChart = props => {
 
   // 设触发动态间隔
   useEffect(() => {
-    iterationTimeoutHolder = window.setTimeout(nextStep, 1000)
+    iterationTimeoutHolder.current = window.setTimeout(nextStep, 1000)
+
     return () => {
-      if (iterationTimeoutHolder) {
-        window.clearTimeout(iterationTimeoutHolder)
+      if (iterationTimeoutHolder.current) {
+        window.clearTimeout(iterationTimeoutHolder.current)
       }
     }
   }, [activeItemIdx])
@@ -114,19 +98,20 @@ const DynamicBarChart = props => {
   console.table('data', data)
   const maxValue = highestValue / 0.85 // 图表最大宽度
   const sortedCurrentValues = keys.sort((a, b) => currentValues[b].value - currentValues[a].value) // 对每组数据进行排序，该项影响动态渲染。
-  const currentItem = dataQueue[activeItemIdx - 1] || {} // 每组的原始数据
 
+  const currentItem = dataQueue[activeItemIdx - 1] || {} // 每组的原始数据
+  console.log(dataQueue)
   return (
     <div className="live-chart">
       {
-        <React.Fragment>
+        <>
           {showTitle && <h1>{currentItem.name}</h1>}
           <section className="chart">
             <div className="chart-bars" style={{ height: (barHeight + barGapSize) * keys.length }}>
               {sortedCurrentValues.map((key, idx) => {
                 const currentValueData = currentValues[key]
                 const value = currentValueData.value
-                const width = Math.abs((value / maxValue) * 100)
+                const width = Math.abs((value / maxValue) * 100) //以当前帧最大的value值为准
                 let widthStr
                 if (isNaN(width) || !width) {
                   widthStr = '1px'
@@ -166,7 +151,7 @@ const DynamicBarChart = props => {
               })}
             </div>
           </section>
-        </React.Fragment>
+        </>
       }
     </div>
   )

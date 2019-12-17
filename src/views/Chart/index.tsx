@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 
-import { DynamicBarChart } from './DynamicChart'
+import { DynamicBarChart } from './DynamicChart.jsx'
 
 import helpers from './helpers'
 import mocks from './mock'

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useState, useMemo, useEffect, useCallback } from 'react'
 
 function Other() {
   const [xiaohong, setXiaohong] = useState('小红的状态')
