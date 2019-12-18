@@ -12,11 +12,23 @@ function usePrevious(value: any) {
 
 function Test2() {
   const [count, setCount] = useState(0)
-  // 相当于 componentDidMount 和 componentDidUpdate:
+
+  const [width, setWidth] = useState(document.body.clientWidth)
+  const onChange = () => {
+    setWidth(document.body.clientWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', onChange, false)
+
+    return () => {
+      window.removeEventListener('resize', onChange, false)
+    }
+  }, [])
   useEffect(() => {
     // 使用浏览器的 API 更新页面标题
     document.title = `You clicked ${count} times`
-  })
+  }, [count])
   const prevCount = usePrevious(count)
 
   function handleAlertClick() {
@@ -26,6 +38,7 @@ function Test2() {
   }
   return (
     <div>
+      页面宽度: {width}
       <p>
         You clicked {count} times , before: {prevCount}
       </p>

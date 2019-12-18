@@ -30,15 +30,9 @@ const DynamicBarChart = props => {
 
   // let iterationTimeoutHolder: number | null = null // 定时器
   // 动态跑起来～
-  function start() {
-    if (activeItemIdx > 1) {
-      return
-    }
-    setNextValues()
-  }
 
   // 对下一帧数据进行处理
-  function setNextValues() {
+  setNextValues = useCallback(() => {
     // 没有帧数时（即已结束），停止渲染
     if (!dataQueue[activeItemIdx]) {
       iterationTimeoutHolder.current = null
@@ -70,7 +64,7 @@ const DynamicBarChart = props => {
     setCurrentValues(nextValues)
     setHighestValue(highestValue)
     setActiveItemIdx(activeItemIdx + 1)
-  }
+  }, [activeItemIdx, currentValues, dataQueue])
 
   // 取原始数据
   useEffect(() => {
@@ -79,8 +73,14 @@ const DynamicBarChart = props => {
 
   // 触发动态
   useEffect(() => {
+    function start() {
+      if (activeItemIdx > 1) {
+        return
+      }
+      setNextValues()
+    }
     start()
-  }, [dataQueue, start])
+  }, [activeItemIdx, dataQueue])
 
   // 设触发动态间隔
   useEffect(() => {
