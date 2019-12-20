@@ -2,7 +2,7 @@
 
 // https://juejin.im/post/5d594ea5518825041301bbcb
 
-import { useState, useEffect, useCallback, useRef, Dispatch, SetStateAction, MutableRefObject } from 'react'
+import { useState, useCallback, useRef, Dispatch, SetStateAction, MutableRefObject } from 'react'
 
 // 模拟传统的setState
 export function useSetState<S extends Record<string, any>>(
@@ -91,23 +91,24 @@ export function useStorage<T>(
 
 // 引用state的最新值
 
-export function useRefState<S extends Record<string, any>>(
+export function useRefState<S>(
   initialState: S | (() => S)
-): [S, (state: Partial<S> | ((state: S) => Partial<S>)) => void, MutableRefObject<S>] {
+): [S, (state: S | ((state: S) => S)) => void, MutableRefObject<S>] {
   // interface MutableRefObject<T> {
   //   current: T
   // }
   const ins = useRef<S>()
+  // function useRef<T = undefined>(): MutableRefObject<T | undefined>;
 
   const [state, setState] = useState(() => {
     // 初始化
-    const value = typeof initialState === 'function' ? initialState() : initialState
+    const value = initialState instanceof Function ? initialState() : initialState
     ins.current = value
     return value
   })
 
   const setValue = useCallback<Dispatch<SetStateAction<S>>>(value => {
-    if (typeof value === 'function') {
+    if (value instanceof Function) {
       setState((prevState: S) => {
         const finalValue = value(prevState)
         ins.current = finalValue
@@ -119,5 +120,35 @@ export function useRefState<S extends Record<string, any>>(
     }
   }, [])
 
-  return [state, setValue, ins]
+  return [state, setValue, ins as MutableRefObject<S>]
+}
+
+// 引用最新的Props
+
+export default function useRefProps<T>(props: T) {
+  const ref = useRef<T>(props)
+  // 每次重新渲染设置值
+  ref.current = props
+
+  return ref
+}
+
+// useInstance
+function isFunction<T>(initial?: T | (() => T)): initial is () => T {
+  return typeof initial === 'function'
+}
+
+export function useInstance<T extends {}>(initial?: T | (() => T)) {
+  const instance = useRef<T>()
+  // 初始化
+
+  console.log(initial)
+  if (instance.current === null) {
+    if (initial) {
+      instance.current = isFunction(initial) ? initial() : initial
+    } else {
+      instance.current = {} as T
+    }
+  }
+  return instance.current
 }
