@@ -2,7 +2,7 @@
 
 // https://juejin.im/post/5d594ea5518825041301bbcb
 
-import { useState, useCallback, useRef, Dispatch, SetStateAction, MutableRefObject } from 'react'
+import { useState, useCallback, useEffect, useRef, Dispatch, SetStateAction, MutableRefObject } from 'react'
 
 // 模拟传统的setState
 export function useSetState<S extends Record<string, any>>(
@@ -141,9 +141,8 @@ function isFunction<T>(initial?: T | (() => T)): initial is () => T {
 export function useInstance<T extends {}>(initial?: T | (() => T)) {
   const instance = useRef<T>()
   // 初始化
-
-  console.log(initial)
-  if (instance.current === null) {
+  console.log(instance)
+  if (!instance.current) {
     if (initial) {
       instance.current = isFunction(initial) ? initial() : initial
     } else {
@@ -151,4 +150,62 @@ export function useInstance<T extends {}>(initial?: T | (() => T)) {
     }
   }
   return instance.current
+}
+
+// 获取上一次渲染的值
+
+export function usePrevious<T>(value: T) {
+  const ref = useRef<T>()
+  // useEffect会在完成这次'渲染'之后执行
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
+
+// export function useImmer(initialValue) {
+//   const [val, updateValue] = useState(initialValue)
+//   return [
+//     val,
+//     useCallback(updater => {
+//       updateValue(produce(updater))
+//     }, [])
+//   ]
+// }
+
+// useToggle 开关实现布尔值切换
+
+export function useToggle(initialValue?: boolean) {
+  const [value, setValue] = useState(!!initialValue)
+  const toggler = useCallback(() => setValue(value => !value), [])
+
+  return [value, toggler]
+}
+
+// useArray 简化数组状态操作
+export function useArray<T>(initial?: T[] | (() => T[]), idKey = 'id') {
+  const [value, setValue] = useState(initial || [])
+  return {
+    value,
+    setValue,
+    push: useCallback(a => setValue(v => [...v, a]), []),
+    clear: useCallback(() => setValue(() => []), []),
+    // removeById: useCallback(id => setValue(arr => arr.filter(v => v && v[idKey] !== id)), [idKey]),
+    removeIndex: useCallback(
+      index =>
+        setValue(v => {
+          v.splice(index, 1)
+          return v
+        }),
+      []
+    )
+  }
+}
+
+// 模拟componentDidMount
+// 如果需要在挂载/状态更新时请求一些资源、并且需要在卸载时释放这些资源，还是推荐使用useEffect
+export function useOnMount(fn: Function) {
+  useEffect(() => {
+    fn()
+  }, [fn]) // 第二个参数设置为[], 表示不必对任何数据， 所以只在首次渲染时调用
 }
