@@ -1,13 +1,16 @@
 /** @format */
 
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 
-import { useRefState, useInstance, useForceUpdate } from '../../libs/hooks'
+import { useRefState, useInstance, useForceUpdate, useActive } from '../../libs/hooks'
 import { Button } from 'antd'
 
 function Demo1() {
   const [count, setCount, countRef] = useRefState(0)
-  console.log(countRef)
+
+  const elRef = useRef(null)
+  const active = useActive(elRef)
+
   const handleIncr = useCallback(() => {
     console.log(555555)
     setCount(countRef.current + 1)
@@ -16,9 +19,8 @@ function Demo1() {
   return (
     <div>
       {count}: <Counter onClick={handleIncr}>increment</Counter>
-      <div>
-        <Demo></Demo>
-      </div>
+      <div>{/* <Demo></Demo> */}</div>
+      <div ref={elRef}>{active ? 'Active' : 'Nop'}</div>
     </div>
   )
 }

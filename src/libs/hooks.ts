@@ -1,8 +1,19 @@
 /** @format */
 
-// https://juejin.im/post/5d594ea5518825041301bbcb
+// https://juejin.im/post/5d594ea5518825041301bbcb 下面大部分hook来源
+// https://github.com/streamich/react-use 更多自定义hook
 
-import { useState, useCallback, useEffect, useRef, Dispatch, SetStateAction, MutableRefObject } from 'react'
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction,
+  MutableRefObject,
+  useMemo
+} from 'react'
+import { EventEmitter } from 'events'
 
 // 模拟传统的setState
 export function useSetState<S extends Record<string, any>>(
@@ -207,5 +218,353 @@ export function useArray<T>(initial?: T[] | (() => T[]), idKey = 'id') {
 export function useOnMount(fn: Function) {
   useEffect(() => {
     fn()
-  }, [fn]) // 第二个参数设置为[], 表示不必对任何数据， 所以只在首次渲染时调用
+  /* eslint-disable */
+  }, []) // 第二个参数设置为[], 表示不必对任何数据， 所以只在首次渲染时调用
 }
+
+// 模拟componentWillUnmount
+
+export function useOnUnmount(fn: Function) {
+  useEffect(() => {
+    return () => {
+        fn()
+    }
+  }, [])
+}
+
+// 模拟componentDidUpdate
+
+export function useOnUpdate(fn: () => void, dep?: any[]) {
+  const ref = useRef({ fn, mounted: false })
+  ref.current.fn = fn
+
+  useEffect(() => {
+    // 首次渲染不执行
+    if (!ref.current.mounted) {
+      ref.current.mounted = true
+    } else {
+      ref.current.fn()
+    }
+  }, dep)
+}
+
+// 简化onChange表单双向绑定
+
+export function useChange<S>(initial?: S | (() => S)) {
+  const [value, setValue] = useState<S | undefined>(initial)
+  const onChange = useCallback(e => setValue(e.target.value), [])
+
+  return {
+    value,
+    setValue,
+    onChange,
+    // 绑定到原生事件
+    bindEvent: {
+      onChange,
+      value,
+    },
+    // 绑定到自定义组件
+    bind: {
+      onChange: setValue,
+      value,
+    },
+  }
+}
+
+// useBind 绑定回调参数
+
+export function useBind(fn: (...args: any[]) => any, ...args: any[]): (...args: any[]) => any {
+  return useMemo(() => fn.bind(null, ...args), args)
+}
+
+// useActive, 在鼠标按下时设置状态为true，鼠标释放时恢复为false
+
+export function useActive(refEl: React.RefObject<HTMLElement>) {
+  const [value, setValue] = useState(false)
+  useEffect(() => {
+    const handleMouseDown = () => {
+      setValue(true)
+    }
+    const handleMouseUp = () => {
+      setValue(false)
+    }
+
+    // DOM 事件监听
+    if (refEl && refEl.current) {
+      refEl.current.addEventListener('mousedown', handleMouseDown)
+      refEl.current.addEventListener('mouseup', handleMouseUp)
+    }
+
+    return () => {
+      if (refEl && refEl.current) {
+        refEl.current.removeEventListener('mousedown', handleMouseDown)
+        refEl.current.removeEventListener('mouseup', handleMouseUp)
+      }
+    }
+  }, [])
+
+  return value
+}
+
+
+// useTouch 手势事件封装，useTouch的实现可以参考[useTouch.ts](https://github.com/GDJiaMi/hooks/blob/master/src/useTouch.ts)
+
+// useDraggable 拖拽事件封装
+export function useDraggable(ref: React.RefObject<HTMLElement>) {
+  const [{ dx, dy }, setOffset] = useState({ dx: 0, dy: 0 })
+
+  useEffect(() => {
+    if (ref.current == null) {
+      throw new Error(`[useDraggable] ref未注册到组件中`)
+    }
+    const el = ref.current
+
+    const handleMouseDown = (event: MouseEvent) => {
+      const startX = event.pageX - dx
+      const startY = event.pageY - dy
+
+      const handleMouseMove = (event: MouseEvent) => {
+        const newDx = event.pageX - startX
+        const newDy = event.pageY - startY
+        setOffset({ dx: newDx, dy: newDy })
+      }
+
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener(
+        'mouseup',
+        () => {
+          document.removeEventListener('mousemove', handleMouseMove)
+        },
+        { once: true },
+      )
+    }
+
+    el.addEventListener('mousedown', handleMouseDown)
+
+    return () => {
+      el.removeEventListener('mousedown', handleMouseDown)
+    }
+  }, [dx, dy])
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.transform = `translate3d(${dx}px, ${dy}px, 0)`
+    }
+  }, [dx, dy])
+}
+
+// react-events 面向未来的高级事件封装
+
+// useSubscription 通用事件源订阅
+
+// useEventEmitter 对接eventEmitter
+
+const functionReturnObject = () => ({})
+const functionReturnArray = () => []
+
+export function useEventEmitter(emmiter: EventEmitter) {
+  const disposers = useRef<Function[]>([])
+  const listeners = useRef<{ [name: string]: Function }>({})
+
+  const on = useCallback(<P>(name: string, cb: (data: P) => void) => {
+    if (!(name in listeners.current)) {
+      const call = (...args: any[]) => {
+        const fn = listeners.current[name]
+        if (fn) {
+          fn(...args)
+        }
+      }
+      // 监听eventEmitter
+      emmiter.on(name, call)
+      disposers.current.push(() => {
+        emmiter.off(name, call)
+      })
+    }
+
+    listeners.current[name] = cb
+  }, [])
+
+  useEffect(() => {
+    // 资源释放
+    return () => {
+      disposers.current.forEach(i => i())
+    }
+  }, [])
+
+  return {
+    on,
+    emit: emmiter.emit,
+  }
+}
+
+
+// 补充react中使用event
+// eventBus.js
+// import {EventEmitter} from 'events';
+// export default new EventEmitter();
+
+// 监听
+// import Bus from './eventBus'
+// Bus.addListener('changeSiblingsData', (msg) => {
+//   this.setState({
+//     bus: msg,
+//   });
+//   console.log(msg);
+// });
+
+// 触发
+// import Bus from './eventBus'
+// Bus.emit('changeSiblingsData', msg);
+
+// Context的妙用，不过需要注意的是如果上级Context.Provider的value变化，使用useContext的组件就会被强制重新渲染。
+
+// useTheme 主题配置
+
+// const ThemeContext = React.createContext<object>({})
+// export const ThemeProvider: FC<{ theme: object }> = props => {
+//   return (<ThemeContext.Provider value={props.theme}>{props.children}</ThemeContext.Provider>)
+// }
+// export function useTheme<T extends object>(): T {
+//   return useContext(ThemeContext)
+// }
+
+// useI18n 国际化,I18n是另一个Context的典型使用场景。使用时可以参考react-intl和react-i18next
+
+// react-hook-form是Hooks+Form的典型案例
+
+// useTimeout 超时修改状态
+
+export function useTimeout(ms: number) {
+  const [ready, setReady] = useState(false)
+  const timerRef = useRef<number>()
+
+  const start = useCallback(() => {
+    clearTimeout(timerRef.current)
+    setReady(true)
+    timerRef.current = window.setTimeout(() => {
+      setReady(false)
+    }, ms)
+  }, [ms])
+
+  const stop = useCallback(() => {
+    clearTimeout(timerRef.current)
+  }, [])
+
+  useOnUnmount(stop)
+
+  return [ready, start, stop]
+}
+
+
+// useOnlineStatus 监听在线状态
+
+function getOnlineStatus() {
+  return typeof navigator.onLine === 'boolean' ? navigator.onLine : true
+}
+
+export function useOnlineStatus() {
+  let [onlineStatus, setOnlineStatus] = useState(getOnlineStatus())
+
+  useEffect(() => {
+    const online = () => setOnlineStatus(true)
+    const offline = () => setOnlineStatus(false)
+    window.addEventListener('online', online)
+    window.addEventListener('offline', offline)
+
+    return () => {
+      window.removeEventListener('online', online)
+      window.removeEventListener('offline', offline)
+    }
+  }, [])
+
+  return onlineStatus
+}
+
+// useTitle 设置文档title，当给定的值变化时，更新document.title
+
+export function useTitle(t: string) {
+  useEffect(() => {
+    document.title = t
+  }, [t]) 
+}
+
+// function Demo(props) {
+//   useTitle(props.isEdit ? '编辑' : '新增')
+//   // ....
+// }
+
+// useDebounce
+
+export function useDebounce(fn: () => void, args?: any[], ms: number = 100, skipMount?: boolean) {
+  const mounted = useRef(false)
+  useEffect(() => {
+    // 跳过挂载执行
+    if (skipMount && !mounted.current) {
+      mounted.current = true
+      return undefined
+    }
+
+    const timer = setTimeout(fn, ms)
+
+    return () => {
+      // 如果args变化，先清除计时器
+      clearTimeout(timer)
+    }
+  }, args)
+}
+
+// const returnEmptyArray = () => []
+// function Demo() {
+//   const [query, setQuery] = useState('')
+//   const [list, setList] = useState(returnEmptyArray)
+
+//   // 搜索
+//   const handleSearch = async () => {
+//     setList(await fetchList(query))
+//   }
+
+//   // 当query变化时执行搜索
+//   useDebounce(handleSearch, [query], 500)
+
+//   return (<div>
+//     <SearchBar value={query} onChange={setQuery} />
+//     <Result list={list}></Result>
+//   </div>)
+// }
+
+// useThrottle
+
+export const useThrottleFn = <T>(fn: (...args: any[]) => T, ms: number = 200, args: any[]) => {
+  const [state, setState] = useState<T>(null as any);
+  const timeout = useRef<any>(null);
+  const nextArgs = useRef(null) as any;
+  const hasNextArgs = useRef(false) as any;
+
+  useEffect(() => {
+    if (!timeout.current) {
+      setState(fn(...args));
+      const timeoutCallback = () => {
+        if (hasNextArgs.current) {
+          hasNextArgs.current = false;
+          setState(fn(...nextArgs.current));
+          timeout.current = window.setTimeout(timeoutCallback, ms);
+        } else {
+          timeout.current = null;
+        }
+      };
+      timeout.current = window.setTimeout(timeoutCallback, ms);
+    } else {
+      nextArgs.current = args;
+      hasNextArgs.current = true;
+    }
+  }, args);
+
+  useOnUnmount(() => {
+    clearTimeout(timeout.current);
+  });
+
+  return state;
+};
+
+// usePromise 封装异步请求
+
