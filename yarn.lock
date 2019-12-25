@@ -2437,10 +2437,10 @@ core-js@^2.4.0, core-js@^2.6.5:
   resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.11.tgz?cache=0&sync_timestamp=1576112371333&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   integrity sha1-OIMUafmSK97Y7iHJ3EaYXgOZMIw=
 
-core-js@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.npm.taobao.org/core-js/download/core-js-3.6.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-3.6.0.tgz#2b854e451de1967d1e29896025cdc13a2518d9ea"
-  integrity sha1-K4VORR3hln0eKYlgJc3BOiUY2eo=
+core-js@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.npm.taobao.org/core-js/download/core-js-3.6.1.tgz#39d5e2e346258cc01eb7d44345b1c3c014ca3f05"
+  integrity sha1-OdXi40YljMAet9RDRbHDwBTKPwU=
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -3191,10 +3191,10 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.npm.taobao.org/escape-string-regexp/download/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-prettier@^6.7.0:
-  version "6.7.0"
-  resolved "https://registry.npm.taobao.org/eslint-config-prettier/download/eslint-config-prettier-6.7.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-config-prettier%2Fdownload%2Feslint-config-prettier-6.7.0.tgz#9a876952e12df2b284adbd3440994bf1f39dfbb9"
-  integrity sha1-modpUuEt8rKErb00QJlL8fOd+7k=
+eslint-config-prettier@^6.8.0:
+  version "6.8.0"
+  resolved "https://registry.npm.taobao.org/eslint-config-prettier/download/eslint-config-prettier-6.8.0.tgz#36bd7559dcef9f97d7596779b38e6a879abb89d3"
+  integrity sha1-Nr11Wdzvn5fXWWd5s45qh5q7idM=
   dependencies:
     get-stdin "^6.0.0"
 
@@ -8323,10 +8323,10 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.npm.taobao.org/strip-json-comments/download/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
-style-loader@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.npm.taobao.org/style-loader/download/style-loader-1.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstyle-loader%2Fdownload%2Fstyle-loader-1.1.1.tgz#8290d915dffe820916790cdcab5aa58c38ab605c"
-  integrity sha1-gpDZFd/+ggkWeQzcq1qljDirYFw=
+style-loader@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npm.taobao.org/style-loader/download/style-loader-1.1.2.tgz?cache=0&sync_timestamp=1577306704749&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstyle-loader%2Fdownload%2Fstyle-loader-1.1.2.tgz#1b519c19faf548df6182b93e72ea1a4156022c2f"
+  integrity sha1-G1GcGfr1SN9hgrk+cuoaQVYCLC8=
   dependencies:
     loader-utils "^1.2.3"
     schema-utils "^2.0.1"
