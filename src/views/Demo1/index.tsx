@@ -12,7 +12,6 @@ function Demo1() {
   const active = useActive(elRef)
 
   const handleIncr = useCallback(() => {
-    console.log(555555)
     setCount(countRef.current + 1)
   }, [countRef, setCount])
 
@@ -21,6 +20,7 @@ function Demo1() {
       {count}: <Counter onClick={handleIncr}>increment</Counter>
       <div>{/* <Demo></Demo> */}</div>
       <div ref={elRef}>{active ? 'Active' : 'Nop'}</div>
+      <Demo />
     </div>
   )
 }

@@ -3,7 +3,7 @@
 import * as React from 'react'
 import './index.scss'
 
-import { Carousel } from 'antd'
+import { Carousel, Button } from 'antd'
 
 interface IState {
   testRef: React.RefObject<Carousel>
@@ -33,6 +33,7 @@ class Home extends React.Component<{}, IState> {
     return (
       <div className="home">
         <p>Here is the Home page!!!</p>
+        <Button>1234567</Button>
         <Carousel ref={this.testRef} dots>
           <div>
             <h3>1</h3>

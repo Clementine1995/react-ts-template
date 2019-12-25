@@ -38,6 +38,7 @@ module.exports = {
   },
   rules: {
     // 这里填入你的项目需要的个性化配置，比如：
+    "react/prop-types": [2, { ignore: ['children'] }],
     // // @fixable 一个缩进必须用两个空格替代
     semi: ['error', 'never'],
     'no-console': 'off',

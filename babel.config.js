@@ -18,8 +18,8 @@ module.exports = {
       'import',
       {
         libraryName: 'antd',
-        libraryDirectory: 'lib',
-        style: true
+        libraryDirectory: 'es',
+        style: true // `style: true` 会加载 less 文件
       }
     ],
     ['@babel/plugin-proposal-decorators', { legacy: true }],

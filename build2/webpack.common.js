@@ -37,6 +37,7 @@ module.exports = {
       },
       {
         test: /\.css$/, // 正则匹配文件路径
+        // include: resolve('../node_modules/antd'),
         exclude: /node_modules/,
         use: [
           config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
