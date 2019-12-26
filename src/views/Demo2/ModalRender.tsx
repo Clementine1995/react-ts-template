@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { FC, useState, useContext, useCallback } from 'react'
+import React, { FC, useState, useContext, useCallback, useMemo } from 'react'
 
 export interface BaseModalProps {
   visible: boolean
@@ -31,8 +31,9 @@ const ModalRenderer: FC<{}> = props => {
     setModal({ Comp, props, visible: true })
   }, [])
 
+  const value = useMemo(() => ({ render }), [render])
   return (
-    <Context.Provider value={{ render }}>
+    <Context.Provider value={value}>
       <div className="modal-container">
         {props.children}
         {!!modal &&
