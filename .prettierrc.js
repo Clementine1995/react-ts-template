@@ -9,5 +9,6 @@ module.exports =  {
   "insertPragma": true,
   "tabWidth": 2,
   "useTabs": false,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "proseWrap": "preserve"
 };
