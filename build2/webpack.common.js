@@ -12,6 +12,7 @@ Object.assign(oriEnv, {
   APP_ENV: config.APP_ENV
 })
 
+// 根据不同环境引入不同变量的问题也可以通过域名来解决，这样就免去了这个插件的使用
 const defineEnv = {}
 for (const key in oriEnv) {
   defineEnv[`process.env.${key}`] = JSON.stringify(oriEnv[key])
@@ -54,6 +55,7 @@ module.exports = {
         test: /\.scss$/,
         include: resolve('../src'),
         use: [
+          // MiniCssExtractPlugin不会热更新，所以本地开发的时候还是用style-loader
           config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           'postcss-loader',
@@ -84,6 +86,23 @@ module.exports = {
             options: {
               javascriptEnabled: true,
               modifyVars: theme
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/, //媒体文件
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10240,
+              fallback: {
+                loader: 'file-loader',
+                options: {
+                  name: 'media/[name].[hash:8].[ext]'
+                }
+              }
             }
           }
         ]
