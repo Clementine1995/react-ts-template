@@ -14,7 +14,7 @@ module.exports = {
     '@babel/preset-react'
   ],
   plugins: [
-    // ["@babel/plugin-transform-runtime", {"corejs": 3}],
+    ['@babel/plugin-transform-runtime', { corejs: 3 }],
     [
       'import',
       {
