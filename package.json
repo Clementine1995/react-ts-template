@@ -85,6 +85,10 @@
     "workbox-webpack-plugin": "^4.3.1",
     "yargs-parser": "^16.1.0"
   },
+  "browserslist": [
+    "> 1%",
+    "last 10 versions"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
