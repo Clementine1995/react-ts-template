@@ -31,6 +31,7 @@ const prodConfig = {
       // maxAsyncRequests: 5, // 默认值，按需加载的 chunk，最大数量
       // maxInitialRequests: 3, // 默认值，初始加载的 chunk，最大数量
       // name: true, // 默认值，控制 chunk 的命名
+      automaticNameDelimiter: '-', // 默认值 ~
       cacheGroups: {
         // 配置缓存组
         vendor: {

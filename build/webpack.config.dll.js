@@ -1,12 +1,11 @@
+/** @format */
+
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const {
-  resolve
-} = require('./utils')
-
+const { resolve } = require('./utils')
 
 module.exports = {
-  mode:'production',
+  mode: 'production',
   entry: {
     vendor: ['react', 'react-dom', 'react-router-dom']
   },
