@@ -4,10 +4,14 @@ import * as React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import loadable from '@loadable/component'
 
-import HomeComponent from './views/Home'
-// const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ './views/Home'))
-const AboutComponent = loadable(() => import(/* webpackChunkName: "about" */ './views/About'))
-const OtherComponent = loadable(() => import(/* webpackChunkName: "other" */ './views/Other'))
+// import HomeComponent from './views/Home'
+const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ /* webpackPreload: true */ './views/Home'))
+const AboutComponent = loadable(() =>
+  import(/* webpackChunkName: "about" */ /* webpackPrefetch: true */ './views/About')
+)
+const OtherComponent = loadable(() =>
+  import(/* webpackChunkName: "other" */ /* webpackPrefetch: true */ './views/Other')
+)
 const ChartComponent = loadable(() => import(/* webpackChunkName: "chart" */ './views/Chart'))
 const Demo1Component = loadable(() => import(/* webpackChunkName: "demo1" */ './views/Demo1'))
 const Demo2Component = loadable(() => import(/* webpackChunkName: "demo2" */ './views/Demo2'))
