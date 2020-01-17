@@ -18,7 +18,7 @@ const DLL_PATH = '../dll'
 
 const prodConfig = {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: 'nosources-source-map', // source-map 是完整的不过体积大很多
   optimization: {
     // 性能配置
     runtimeChunk: true, // 开启 manifest 缓存，每个入口单独创建
@@ -63,7 +63,7 @@ const prodConfig = {
             pure_funcs: ['console.log'] // 移除console
           }
         },
-        sourceMap: Boolean(config.sourceMap)
+        sourceMap: true
       }),
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),

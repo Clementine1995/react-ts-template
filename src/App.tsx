@@ -4,8 +4,8 @@ import * as React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import loadable from '@loadable/component'
 
-// import HomeComponent from './views/Home'
-const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ /* webpackPreload: true */ './views/Home'))
+import HomeComponent from './views/Home'
+// const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ /* webpackPreload: true */ './views/Home'))
 const AboutComponent = loadable(() =>
   import(/* webpackChunkName: "about" */ /* webpackPrefetch: true */ './views/About')
 )

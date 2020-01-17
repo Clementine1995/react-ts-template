@@ -19,9 +19,13 @@ for (const key in oriEnv) {
 }
 
 module.exports = {
-  entry: resolve('../src/index.tsx'),
+  entry: {
+    app: resolve('../src/index.tsx') // 默认的key为main,打包后可以看到
+  },
   output: {
+    // publicPatch: '//【cdn】.com', //指定存放JS文件的CDN地址
     filename: `js/[name].[${config.isHash}].js`,
+    // chunkFilename: 'js/[name].[${config.isHash}].chunk.js',
     path: resolve('../dist')
   },
   module: {
@@ -31,7 +35,10 @@ module.exports = {
         include: [resolve('../src')],
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
           }
         ],
         exclude: /node_modules/
@@ -128,7 +135,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               //1024 == 1kb
-              limit: 10240,
+              limit: 5000,
               name: assetsPath('font/[name].[hash:7].[ext]')
             }
           }
