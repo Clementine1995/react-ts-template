@@ -21,7 +21,9 @@ const prodConfig = {
   devtool: 'nosources-source-map', // source-map 是完整的不过体积大很多
   optimization: {
     // 性能配置
-    runtimeChunk: true, // 开启 manifest 缓存，每个入口单独创建
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`
+    }, // 开启 manifest 缓存，每个入口单独创建
     moduleIds: 'hashed',
     splitChunks: {
       chunks: 'async', // 提取的 chunk 类型，all: 所有，async: 异步，initial: 初始
@@ -108,8 +110,11 @@ const prodConfig = {
       chunksSortMode: 'dependency'
     }),
     new AddAssetHtmlPlugin({
+      // files: [], // 默认会将下面匹配文件加入到所有HtmlWebpackPlugin指定的资源中，可以指定加入到那些里
       filepath: resolve(`${DLL_PATH}/**/*.js`),
-      includeSourcemap: false
+      includeSourcemap: false,
+      outputPath: assetsPath('js'),
+      publicPath: 'js'
     }),
     new ScriptExtHtmlWebpackPlugin({
       //`runtime` must same as runtimeChunk name. default is `runtime`
@@ -118,8 +123,8 @@ const prodConfig = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: assetsPath('css/[name].[contenthash].css'),
-      chunkFilename: assetsPath('css/[name].[id].[contenthash].css')
+      filename: assetsPath('css/[name].[contenthash:8].css'),
+      chunkFilename: assetsPath('css/[name].[id].[contenthash:8].css')
     })
     // new workboxPlugin.GenerateSW({
     //   swDest: 'sw.js',
