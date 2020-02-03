@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Clementine1995/react-ts-template#readme",
   "dependencies": {
     "@babel/runtime-corejs3": "^7.8.4",
-    "antd": "^3.26.7",
+    "antd": "^3.26.8",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "react": "^16.12.0",
@@ -61,7 +61,7 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
@@ -80,7 +80,7 @@
     "webpack": "^4.41.5",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1",
+    "webpack-dev-server": "^3.10.2",
     "webpack-merge": "^4.2.2",
     "workbox-webpack-plugin": "^5.0.0",
     "yargs-parser": "^16.1.0"
