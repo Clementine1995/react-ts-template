@@ -144,7 +144,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', 'jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     // tsconfig-paths-webpack-plugin 这个包会将 tsconfig.json 中的 path 配置项内容映射到 webpack 配置中去，
     // 这样就不需要在 webpack 中的 alias 配置项里配置路径映射
     alias: {
