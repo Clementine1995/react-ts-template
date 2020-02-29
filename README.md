@@ -5,7 +5,7 @@ React + Typescript项目模板
 1. webpack4
 2. babel7
 3. eslint
-4. antd
+4. antd4
 5. prettier
 6. pwa
 7. 还有一些东西

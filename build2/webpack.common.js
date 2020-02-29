@@ -149,7 +149,6 @@ module.exports = {
     // 这样就不需要在 webpack 中的 alias 配置项里配置路径映射
     alias: {
       '@': resolve('../src'),
-      '@ant-design/icons/lib/dist$': resolve('../src/icons.ts'),
       '@components': resolve('../src/components'),
       _img: resolve('../src/assets/img')
     }
