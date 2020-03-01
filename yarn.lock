@@ -9745,10 +9745,10 @@ yargs-parser@^13.1.0:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs-parser@^17.0.0:
-  version "17.0.0"
-  resolved "https://registry.npm.taobao.org/yargs-parser/download/yargs-parser-17.0.0.tgz?cache=0&sync_timestamp=1581306767433&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fyargs-parser%2Fdownload%2Fyargs-parser-17.0.0.tgz#cb2586e6fd445b17ced264dd4a38c60bdb35b7ec"
-  integrity sha1-yyWG5v1EWxfO0mTdSjjGC9s1t+w=
+yargs-parser@^17.1.0:
+  version "17.1.0"
+  resolved "https://registry.npm.taobao.org/yargs-parser/download/yargs-parser-17.1.0.tgz?cache=0&sync_timestamp=1583027805504&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fyargs-parser%2Fdownload%2Fyargs-parser-17.1.0.tgz#b95ff3201e98b89e86070f92bef636016a0b0766"
+  integrity sha1-uV/zIB6YuJ6GBw+SvvY2AWoLB2Y=
   dependencies:
     camelcase "^5.0.0"
     decamelize "^1.2.0"

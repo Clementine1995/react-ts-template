@@ -83,7 +83,7 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2",
     "workbox-webpack-plugin": "^5.0.0",
-    "yargs-parser": "^17.0.0"
+    "yargs-parser": "^17.1.0"
   },
   "browserslist": [
     "> 1%",
