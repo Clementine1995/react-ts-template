@@ -19,3 +19,7 @@ React + Typescript项目模板
 ## @loadable/component
 
 [官方文档](https://loadable-components.com/docs/getting-started/)
+
+## Delete `␍`eslint(prettier/prettier) 错误
+
+git config --global core.autocrlf false
