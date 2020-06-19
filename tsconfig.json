@@ -19,10 +19,10 @@
     "outDir": "./dist",                       /* Redirect output structure to the directory. */
     // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
-    // "incremental": true,                   /* Enable incremental compilation */
+    // "incremental": true,                   /* Enable incremental compilation 通过从以前的编译中读取/写入信息到磁盘上的文件来启用增量编译 */
     // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
     // "removeComments": true,                /* Do not emit comments to output. */
-    // "noEmit": true,                        /* Do not emit outputs. */
+    // "noEmit": true,                        /* Do not emit outputs. 不输出(意思是不编译代码，只执行类型检查) */
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     "isolatedModules": true,                  /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
