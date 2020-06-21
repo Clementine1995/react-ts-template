@@ -10,5 +10,6 @@ module.exports =  {
   "tabWidth": 2,
   "useTabs": false,
   "trailingComma": "none",
-  "proseWrap": "preserve"
+  "proseWrap": "preserve",
+  "endOfLine": "auto"
 };

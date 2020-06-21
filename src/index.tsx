@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 
 // import 'antd/dist/antd.css'
-import 'antd/dist/antd.less'
+import 'antd/dist/antd.css'
 import './styles/reset.css'
 import './index.scss'
 
