@@ -17,7 +17,7 @@ const Context = React.createContext<ModalContextValue>({
   }
 })
 
-const ModalRenderer: FC<{}> = props => {
+const ModalRenderer: FC = props => {
   const [modal, setModal] = useState<{
     Comp: React.ComponentType<any>
     props: any

@@ -12,7 +12,7 @@ const MyModal: FC<BaseModalProps & { a: number }> = (props: BaseModalProps & { a
   )
 }
 
-const WithModal: FC<{}> = props => {
+const WithModal: FC = props => {
   const showModal = useModal(MyModal)
 
   const handleShow = useCallback(() => {
