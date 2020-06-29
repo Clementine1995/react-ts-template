@@ -85,7 +85,7 @@ const prodConfig = {
     hints: 'warning', // 性能提示开关 false | "error" | "warning"
     maxAssetSize: 100000, // 生成的文件最大限制 整数类型（以字节为单位）
     maxEntrypointSize: 100000, // 引入的文件最大限制 整数类型（以字节为单位）
-    assetFilter: function(assetFilename) {
+    assetFilter: function (assetFilename) {
       // 提供资源文件名的断言函数
       return /\.(png|jpe?g|gif|svg)(\?.*)?$/.test(assetFilename)
     }
@@ -105,9 +105,7 @@ const prodConfig = {
         removeAttributeQuotes: true
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      }
     }),
     new AddAssetHtmlPlugin({
       // files: [], // 默认会将下面匹配文件加入到所有HtmlWebpackPlugin指定的资源中，可以指定加入到那些里

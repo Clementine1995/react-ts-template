@@ -11,14 +11,14 @@ interface IState {
 
 let timer: number | undefined = undefined
 
-class Home extends React.Component<{}, IState> {
+class Home extends React.Component<unknown, IState> {
   private testRef: React.RefObject<Carousel>
-  constructor(props: any) {
+  constructor(props: unknown) {
     super(props)
     // 创建一个 ref 来存储 textInput 的 DOM 元素
     this.testRef = React.createRef<Carousel>()
   }
-  componentDidMount() {
+  componentDidMount(): void {
     console.log(this.testRef.current!.innerSlider)
 
     timer = window.setInterval(() => {
@@ -26,10 +26,10 @@ class Home extends React.Component<{}, IState> {
     }, 500)
     // this.testRef.innerSlider.autoplayTimer = 5
   }
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     window.clearInterval(timer)
   }
-  render() {
+  render(): JSX.Element {
     return (
       <div className="home">
         <p>Here is the Home page!!!</p>

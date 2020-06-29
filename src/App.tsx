@@ -17,7 +17,7 @@ const Demo1Component = loadable(() => import(/* webpackChunkName: "demo1" */ './
 const Demo2Component = loadable(() => import(/* webpackChunkName: "demo2" */ './views/Demo2'))
 
 class App extends React.Component {
-  render() {
+  render(): JSX.Element {
     return (
       <div className="app">
         <Router>

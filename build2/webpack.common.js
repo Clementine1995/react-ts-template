@@ -5,6 +5,7 @@ const { assetsPath, resolve } = require('./utils')
 const theme = require('./theme')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const darkThemeVars = require('antd/dist/dark-theme')
 
 const env = require('./env.json')
 const oriEnv = env[config.APP_ENV]
@@ -93,8 +94,13 @@ module.exports = {
             options: {
               lessOptions: {
                 // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
-                modifyVars: theme,
-                javascriptEnabled: true
+                javascriptEnabled: true,
+                modifyVars: {
+                  hack: `true;@import "${require.resolve('antd/lib/style/color/colorPalette.less')}";`,
+                  ...darkThemeVars,
+                  ...theme
+                  // '@primary-color': '#02b875'
+                }
               }
             }
           }
