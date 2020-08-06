@@ -23,3 +23,8 @@ React + Typescript项目模板
 ## Delete `␍`eslint(prettier/prettier) 错误
 
 git config --global core.autocrlf false
+
+## TODO
+
+1. 增加Git Commit Message
+2. Lint Staged

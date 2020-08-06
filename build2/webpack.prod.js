@@ -1,6 +1,6 @@
 /** @format */
 
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const config = require('./config')
 const baseConfig = require('./webpack.common')
 const webpack = require('webpack')
