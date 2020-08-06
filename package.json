@@ -12,7 +12,7 @@
     "dll": "webpack --config build/webpack.config.dll.js",
     "dev2": "webpack-dev-server --config build2/webpack.dev.js --mode development --hot",
     "build2": "webpack --config build2/webpack.prod.js --mode production --env test",
-    "commit":"git-cz",
+    "commit": "git-cz",
     "lint": "eslint \"src/**\"",
     "lint:f": "eslint \"src/**\" --fix"
   },
@@ -45,6 +45,8 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
     "@loadable/component": "^5.13.1",
     "@types/loadable__component": "^5.13.0",
     "@types/react": "^16.9.44",
@@ -58,6 +60,7 @@
     "babel-plugin-import": "^1.13.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.0",
+    "cz-conventional-changelog": "^3.2.0",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -65,6 +68,7 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "husky": "^4.2.5",
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
     "mini-css-extract-plugin": "^0.9.0",
@@ -91,7 +95,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -99,5 +103,10 @@
       "eslint",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

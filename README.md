@@ -39,3 +39,5 @@ git config --global core.autocrlf false
   1.7 npm install husky --save-dev
   1.8 配置git commit提交时的校验钩子
 2. Lint Staged
+
+package.json husky hook里面暂时删了"pre-commit": "lint-staged",
