@@ -12,7 +12,7 @@
     "dll": "webpack --config build/webpack.config.dll.js",
     "dev2": "webpack-dev-server --config build2/webpack.dev.js --mode development --hot",
     "build2": "webpack --config build2/webpack.prod.js --mode production --env test",
-    "commit": "git-cz",
+    "commit": "git cz",
     "lint": "eslint \"src/**\" --max-warnings 0",
     "lint:f": "eslint \"src/**\" --fix",
     "prettier": "prettier src test --write"

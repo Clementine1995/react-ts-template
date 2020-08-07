@@ -27,6 +27,7 @@ git config --global core.autocrlf false
 ## TODO
 
 >[Cz工具集使用介绍 - 规范Git提交说明](https://juejin.im/post/6844903831893966856)
+>
 >[从零开始配置 TypeScript 项目](https://juejin.im/post/6856410900577026061)
 
 1. 增加Git Commit Message
@@ -39,5 +40,3 @@ git config --global core.autocrlf false
   1.7 npm install husky --save-dev
   1.8 配置git commit提交时的校验钩子
 2. Lint Staged
-
-package.json husky hook里面暂时删了"pre-commit": "lint-staged",
