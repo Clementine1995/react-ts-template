@@ -2,3 +2,15 @@
 /src/registerServiceWorker.js
 /node_modules/*
 dll/
+
+# eslint
+.eslintrc.js
+
+# commitizen
+commitlint.config.js
+
+# prettier
+.prettierrc.js
+
+# build
+dist
