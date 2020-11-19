@@ -13,8 +13,9 @@
     "dev2": "webpack serve --config build2/webpack.dev.js --mode development --hot",
     "build2": "webpack --config build2/webpack.prod.js --mode production --env test",
     "commit": "git-cz",
-    "lint": "eslint \"src/**\"",
-    "lint:f": "eslint \"src/**\" --fix"
+    "lint": "eslint \"src/**\" --max-warnings 0",
+    "lint:f": "eslint \"src/**\" --fix",
+    "prettier": "prettier src test --write"
   },
   "repository": {
     "type": "git",
@@ -74,6 +75,7 @@
     "husky": "^4.3.0",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
+    "lint-staged": "^10.5.1",
     "mini-css-extract-plugin": "^1.3.1",
     "node-sass": "^5.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
@@ -99,13 +101,14 @@
   ],
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "*.{.ts,.tsx}": [
-      "eslint",
-      "git add"
+    "*.{.ts,.tsx,.js,.jsx}": [
+      "npm run lint",
+      "npm run prettier"
     ]
   },
   "config": {

@@ -2,4 +2,17 @@
 /src/registerServiceWorker.js
 /node_modules/*
 dll/
+
 tsconfig.json
+
+# eslint
+.eslintrc.js
+
+# commitizen
+commitlint.config.js
+
+# prettier
+.prettierrc.js
+
+# build
+dist
