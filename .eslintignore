@@ -2,3 +2,4 @@
 /src/registerServiceWorker.js
 /node_modules/*
 dll/
+tsconfig.json

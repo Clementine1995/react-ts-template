@@ -3,18 +3,19 @@
 const { merge } = require('webpack-merge')
 const config = require('./config')
 const baseConfig = require('./webpack.common')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+// const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { assetsPath, resolve } = require('./utils')
+const { assetsPath } = require('./utils')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
 // const workboxPlugin = require('workbox-webpack-plugin')
-const DLL_PATH = '../dll'
+
+// const DLL_PATH = '../dll'
 
 const prodConfig = {
   mode: 'production',
@@ -24,7 +25,7 @@ const prodConfig = {
     runtimeChunk: {
       name: entrypoint => `runtime-${entrypoint.name}`
     }, // 开启 manifest 缓存，每个入口单独创建
-    moduleIds: 'hashed',
+    moduleIds: 'deterministic', // The value 'hashed' for option 'optimization.moduleIds' is deprecated. Use 'deterministic' instead.
     splitChunks: {
       chunks: 'async', // 提取的 chunk 类型，all: 所有，async: 异步，initial: 初始
       // minSize: 30000, // 默认值，新 chunk 产生的最小限制 整数类型（以字节为单位）
@@ -55,8 +56,8 @@ const prodConfig = {
     },
     minimizer: [
       new TerserPlugin({
-        cache: true,
-        // parallel: true,
+        // cache: true, 也没用了与 webpack 5 不能兼容
+        // parallel: true, // 提高构建速度用的
         terserOptions: {
           compress: {
             warnings: true,
@@ -64,8 +65,8 @@ const prodConfig = {
             drop_debugger: true,
             pure_funcs: ['console.log'] // 移除console
           }
-        },
-        sourceMap: true
+        }
+        // sourceMap: true // 这个配置项没了
       }),
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),
@@ -92,9 +93,9 @@ const prodConfig = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.DllReferencePlugin({
-      manifest: require(`${DLL_PATH}/vendor.manifest.json`)
-    }),
+    // new webpack.DllReferencePlugin({
+    //   manifest: require(`${DLL_PATH}/vendor.manifest.json`)
+    // }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/index.html',
@@ -107,13 +108,13 @@ const prodConfig = {
         // https://github.com/kangax/html-minifier#options-quick-reference
       }
     }),
-    new AddAssetHtmlPlugin({
-      // files: [], // 默认会将下面匹配文件加入到所有HtmlWebpackPlugin指定的资源中，可以指定加入到那些里
-      filepath: resolve(`${DLL_PATH}/**/*.js`),
-      includeSourcemap: false,
-      outputPath: assetsPath('js'),
-      publicPath: 'js'
-    }),
+    // new AddAssetHtmlPlugin({
+    //   // files: [], // 默认会将下面匹配文件加入到所有HtmlWebpackPlugin指定的资源中，可以指定加入到那些里
+    //   filepath: resolve(`${DLL_PATH}/**/*.js`),
+    //   includeSourcemap: false,
+    //   outputPath: assetsPath('js'),
+    //   publicPath: 'js'
+    // }),
     new ScriptExtHtmlWebpackPlugin({
       //`runtime` must same as runtimeChunk name. default is `runtime`
       inline: /runtime\..*\.js$/

@@ -1,3 +1,5 @@
+/** @format */
+
 const config = require('./config')
 const plugins = require('./plugins')
 const { resolve } = require('./utils')
@@ -8,22 +10,23 @@ const optimization = require('./optimization')
 module.exports = {
   /*入口*/
   entry: resolve('../src/index.tsx'),
-  
+
   /*输出到dist目录，输出文件名字为bundle.js*/
   output: {
-      path: resolve('../dist'),
-      filename: 'js/[name].js'
+    path: resolve('../dist'),
+    filename: 'js/[name].js'
   },
   devtool: config.sourceMap,
   devServer: {
     host: 'localhost',
     port: 3000,
     historyApiFallback: true,
-    overlay: {//当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
+    overlay: {
+      //当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
       errors: true
     },
     inline: true,
-    hot: true,
+    hot: true
     // proxy: {
     //   '/api/v1': {
     //     target: '',

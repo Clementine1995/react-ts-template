@@ -116,7 +116,7 @@ module.exports = {
               fallback: {
                 loader: 'file-loader',
                 options: {
-                  name: 'media/[name].[hash:8].[ext]'
+                  name: 'media/[name].[fullhash:8].[ext]'
                 }
               }
             }
@@ -132,7 +132,7 @@ module.exports = {
               //1024 == 1kb
               //小于10kb时打包成base64编码的图片否则单独打包成图片
               limit: 10240,
-              name: assetsPath('img/[name].[hash:7].[ext]')
+              name: assetsPath('img/[name].[fullhash:7].[ext]')
             }
           }
         ]
@@ -145,7 +145,7 @@ module.exports = {
             options: {
               //1024 == 1kb
               limit: 5000,
-              name: assetsPath('font/[name].[hash:7].[ext]')
+              name: assetsPath('font/[name].[fullhash:7].[ext]')
             }
           }
         ]
