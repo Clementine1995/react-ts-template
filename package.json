@@ -31,7 +31,7 @@
   "dependencies": {
     "@babel/runtime-corejs3": "^7.12.5",
     "antd": "^4.8.4",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "core-js": "^3.7.0",
     "history": "^5.0.0",
     "react": "^17.0.1",
