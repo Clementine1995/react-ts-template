@@ -5,7 +5,8 @@ const { assetsPath, resolve } = require('./utils')
 const theme = require('./theme')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const darkThemeVars = require('antd/dist/dark-theme')
+
+const { getThemeVariables } = require('antd/dist/theme')
 
 const env = require('./env.json')
 const oriEnv = env[config.APP_ENV]
@@ -97,7 +98,10 @@ module.exports = {
                 javascriptEnabled: true,
                 modifyVars: {
                   hack: `true;@import "${require.resolve('antd/lib/style/color/colorPalette.less')}";`,
-                  ...darkThemeVars,
+                  ...getThemeVariables({
+                    dark: false, // 开启暗黑模式
+                    compact: false // 开启紧凑模式
+                  }),
                   ...theme
                   // '@primary-color': '#02b875'
                 }
