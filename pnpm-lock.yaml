@@ -31,7 +31,7 @@ specifiers:
   css-loader: ^6.6.0
   cz-conventional-changelog: ^3.3.0
   eslint: ^8.9.0
-  eslint-config-prettier: ^8.3.0
+  eslint-config-prettier: ^8.4.0
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-react: ^7.28.0
   eslint-plugin-react-hooks: ^4.3.0
@@ -103,8 +103,8 @@ devDependencies:
   css-loader: registry.npmmirror.com/css-loader/6.6.0_webpack@5.69.1
   cz-conventional-changelog: registry.npmmirror.com/cz-conventional-changelog/3.3.0
   eslint: registry.npmmirror.com/eslint/8.9.0
-  eslint-config-prettier: registry.nlark.com/eslint-config-prettier/8.3.0_eslint@8.9.0
-  eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/4.0.0_07b422646bb75d3db791621d4fdbc992
+  eslint-config-prettier: registry.npmmirror.com/eslint-config-prettier/8.4.0_eslint@8.9.0
+  eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/4.0.0_9f62b85ce3ce02949dbd2ccffcebe95f
   eslint-plugin-react: registry.npmmirror.com/eslint-plugin-react/7.28.0_eslint@8.9.0
   eslint-plugin-react-hooks: registry.npmmirror.com/eslint-plugin-react-hooks/4.3.0_eslint@8.9.0
   file-loader: registry.nlark.com/file-loader/6.2.0_webpack@5.69.1
@@ -1045,18 +1045,6 @@ packages:
       is-callable: registry.nlark.com/is-callable/1.2.4
       is-date-object: registry.npmmirror.com/is-date-object/1.0.5
       is-symbol: registry.nlark.com/is-symbol/1.0.4
-    dev: true
-
-  registry.nlark.com/eslint-config-prettier/8.3.0_eslint@8.9.0:
-    resolution: {integrity: sha1-90cbILb+ipqSVMxoRFQgKIai3Xo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/eslint-config-prettier/download/eslint-config-prettier-8.3.0.tgz?cache=0&sync_timestamp=1631600369547&other_urls=https%3A%2F%2Fregistry.nlark.com%2Feslint-config-prettier%2Fdownload%2Feslint-config-prettier-8.3.0.tgz}
-    id: registry.nlark.com/eslint-config-prettier/8.3.0
-    name: eslint-config-prettier
-    version: 8.3.0
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-    dependencies:
-      eslint: registry.npmmirror.com/eslint/8.9.0
     dev: true
 
   registry.nlark.com/expand-brackets/2.1.4:
@@ -7021,7 +7009,19 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  registry.npmmirror.com/eslint-plugin-prettier/4.0.0_07b422646bb75d3db791621d4fdbc992:
+  registry.npmmirror.com/eslint-config-prettier/8.4.0_eslint@8.9.0:
+    resolution: {integrity: sha512-CFotdUcMY18nGRo5KGsnNxpznzhkopOcOo0InID+sgQssPrzjvsyKZPvOgymTFeHrFuC3Tzdf2YndhXtULK9Iw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/eslint-config-prettier/-/eslint-config-prettier-8.4.0.tgz}
+    id: registry.npmmirror.com/eslint-config-prettier/8.4.0
+    name: eslint-config-prettier
+    version: 8.4.0
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: registry.npmmirror.com/eslint/8.9.0
+    dev: true
+
+  registry.npmmirror.com/eslint-plugin-prettier/4.0.0_9f62b85ce3ce02949dbd2ccffcebe95f:
     resolution: {integrity: sha1-i5nR5LiySnYkcrRWeZICNhnLmOA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/eslint-plugin-prettier/download/eslint-plugin-prettier-4.0.0.tgz}
     id: registry.npmmirror.com/eslint-plugin-prettier/4.0.0
     name: eslint-plugin-prettier
@@ -7036,7 +7036,7 @@ packages:
         optional: true
     dependencies:
       eslint: registry.npmmirror.com/eslint/8.9.0
-      eslint-config-prettier: registry.nlark.com/eslint-config-prettier/8.3.0_eslint@8.9.0
+      eslint-config-prettier: registry.npmmirror.com/eslint-config-prettier/8.4.0_eslint@8.9.0
       prettier: registry.npmmirror.com/prettier/2.5.1
       prettier-linter-helpers: registry.nlark.com/prettier-linter-helpers/1.0.0
     dev: true
