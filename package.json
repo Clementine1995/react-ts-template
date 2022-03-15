@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/Clementine1995/react-ts-template#readme",
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.7",
     "antd": "^4.19.2",
     "axios": "^0.26.1",
     "core-js": "^3.21.1",
@@ -40,7 +40,7 @@
     "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.7",
     "@babel/plugin-proposal-class-properties": "7.16.7",
     "@babel/plugin-proposal-decorators": "7.17.2",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
@@ -48,7 +48,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@babel/runtime": "^7.17.2",
+    "@babel/runtime": "^7.17.7",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
     "@loadable/component": "^5.15.2",
@@ -56,8 +56,8 @@
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
     "@types/react-router-dom": "^5.3.3",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
     "add-asset-html-webpack-plugin": "^5.0.1",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
