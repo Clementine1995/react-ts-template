@@ -21,7 +21,7 @@ const devConfig = {
     port: 3000,
     historyApiFallback: true,
     open: true,
-    hot: true,
+    // hot: true, hot已经自动开启，不需要手动设置了
     client: {
       logging: 'info',
       overlay: true, //当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
