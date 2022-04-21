@@ -24,10 +24,10 @@ specifiers:
   antd: ^4.19.5
   autoprefixer: ^10.4.4
   axios: ^0.26.1
-  babel-loader: ^8.2.4
+  babel-loader: ^8.2.5
   babel-plugin-import: ^1.13.5
   clean-webpack-plugin: ^4.0.0
-  core-js: ^3.22.0
+  core-js: ^3.22.1
   css-loader: ^6.7.1
   cz-conventional-changelog: ^3.3.0
   eslint: ^8.13.0
@@ -41,7 +41,7 @@ specifiers:
   husky: ^7.0.4
   less: ^4.1.2
   less-loader: ^10.2.0
-  lint-staged: ^12.3.8
+  lint-staged: ^12.4.0
   mini-css-extract-plugin: ^2.6.0
   node-sass: ^7.0.1
   optimize-css-assets-webpack-plugin: ^6.0.1
@@ -69,7 +69,7 @@ dependencies:
   '@babel/runtime-corejs3': registry.npmmirror.com/@babel/runtime-corejs3/7.17.9
   antd: registry.npmmirror.com/antd/4.19.5_react-dom@18.0.0+react@18.0.0
   axios: registry.npmmirror.com/axios/0.26.1
-  core-js: registry.npmmirror.com/core-js/3.22.0
+  core-js: registry.npmmirror.com/core-js/3.22.1
   history: registry.npmmirror.com/history/5.3.0
   react: registry.npmmirror.com/react/18.0.0
   react-dom: registry.npmmirror.com/react-dom/18.0.0_react@18.0.0
@@ -97,7 +97,7 @@ devDependencies:
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.20.0_eslint@8.13.0+typescript@4.6.3
   add-asset-html-webpack-plugin: registry.npmmirror.com/add-asset-html-webpack-plugin/5.0.2_833490016f2df6f9ad47bd9073f6abad
   autoprefixer: registry.npmmirror.com/autoprefixer/10.4.4_postcss@8.4.12
-  babel-loader: registry.npmmirror.com/babel-loader/8.2.4_acba72ea4bf9d339cdfcd8f55cdb7006
+  babel-loader: registry.npmmirror.com/babel-loader/8.2.5_acba72ea4bf9d339cdfcd8f55cdb7006
   babel-plugin-import: registry.npmmirror.com/babel-plugin-import/1.13.5
   clean-webpack-plugin: registry.npmmirror.com/clean-webpack-plugin/4.0.0_webpack@5.72.0
   css-loader: registry.npmmirror.com/css-loader/6.7.1_webpack@5.72.0
@@ -112,7 +112,7 @@ devDependencies:
   husky: registry.npmmirror.com/husky/7.0.4
   less: registry.npmmirror.com/less/4.1.2
   less-loader: registry.npmmirror.com/less-loader/10.2.0_less@4.1.2+webpack@5.72.0
-  lint-staged: registry.npmmirror.com/lint-staged/12.3.8
+  lint-staged: registry.npmmirror.com/lint-staged/12.4.0
   mini-css-extract-plugin: registry.npmmirror.com/mini-css-extract-plugin/2.6.0_webpack@5.72.0
   node-sass: registry.npmmirror.com/node-sass/7.0.1
   optimize-css-assets-webpack-plugin: registry.npmmirror.com/optimize-css-assets-webpack-plugin/6.0.1_webpack@5.72.0
@@ -4662,11 +4662,11 @@ packages:
       - debug
     dev: false
 
-  registry.npmmirror.com/babel-loader/8.2.4_acba72ea4bf9d339cdfcd8f55cdb7006:
-    resolution: {integrity: sha512-8dytA3gcvPPPv4Grjhnt8b5IIiTcq/zeXOPk4iTYI0SVXcsmuGg7JtBRDp8S9X+gJfhQ8ektjXZlDu1Bb33U8A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/babel-loader/-/babel-loader-8.2.4.tgz}
-    id: registry.npmmirror.com/babel-loader/8.2.4
+  registry.npmmirror.com/babel-loader/8.2.5_acba72ea4bf9d339cdfcd8f55cdb7006:
+    resolution: {integrity: sha512-OSiFfH89LrEMiWd4pLNqGz4CwJDtbs2ZVc+iGu2HrkRfPxId9F2anQj38IxWpmRfsUY0aBZYi1EFcd3mhtRMLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/babel-loader/-/babel-loader-8.2.5.tgz}
+    id: registry.npmmirror.com/babel-loader/8.2.5
     name: babel-loader
-    version: 8.2.4
+    version: 8.2.5
     engines: {node: '>= 8.9'}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -5308,10 +5308,10 @@ packages:
     requiresBuild: true
     dev: false
 
-  registry.npmmirror.com/core-js/3.22.0:
-    resolution: {integrity: sha512-8h9jBweRjMiY+ORO7bdWSeWfHhLPO7whobj7Z2Bl0IDo00C228EdGgH7FE4jGumbEjzcFfkfW8bXgdkEDhnwHQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/core-js/-/core-js-3.22.0.tgz}
+  registry.npmmirror.com/core-js/3.22.1:
+    resolution: {integrity: sha512-l6CwCLq7XgITOQGhv1dIUmwCFoqFjyQ6zQHUCQlS0xKmb9d6OHIg8jDiEoswhaettT21BSF5qKr6kbvE+aKwxw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/core-js/-/core-js-3.22.1.tgz}
     name: core-js
-    version: 3.22.0
+    version: 3.22.1
     requiresBuild: true
     dev: false
 
@@ -7754,10 +7754,10 @@ packages:
     version: 1.2.4
     dev: true
 
-  registry.npmmirror.com/lint-staged/12.3.8:
-    resolution: {integrity: sha512-0+UpNaqIwKRSGAFOCcpuYNIv/j5QGVC+xUVvmSdxHO+IfIGoHbFLo3XcPmV/LLnsVj5EAncNHVtlITSoY5qWGQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lint-staged/-/lint-staged-12.3.8.tgz}
+  registry.npmmirror.com/lint-staged/12.4.0:
+    resolution: {integrity: sha512-3X7MR0h9b7qf4iXf/1n7RlVAx+EzpAZXoCEMhVSpaBlgKDfH2ewf+QUm7BddFyq29v4dgPP+8+uYpWuSWx035A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lint-staged/-/lint-staged-12.4.0.tgz}
     name: lint-staged
-    version: 12.3.8
+    version: 12.4.0
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
