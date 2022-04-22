@@ -15,8 +15,8 @@ specifiers:
   '@commitlint/config-conventional': ^16.2.1
   '@loadable/component': ^5.15.2
   '@types/loadable__component': ^5.13.4
-  '@types/react': ^18.0.5
-  '@types/react-dom': ^18.0.1
+  '@types/react': ^18.0.6
+  '@types/react-dom': ^18.0.2
   '@types/react-router-dom': ^5.3.3
   '@typescript-eslint/eslint-plugin': ^5.20.0
   '@typescript-eslint/parser': ^5.20.0
@@ -27,7 +27,7 @@ specifiers:
   babel-loader: ^8.2.5
   babel-plugin-import: ^1.13.5
   clean-webpack-plugin: ^4.0.0
-  core-js: ^3.22.1
+  core-js: ^3.22.2
   css-loader: ^6.7.1
   cz-conventional-changelog: ^3.3.0
   eslint: ^8.13.0
@@ -69,7 +69,7 @@ dependencies:
   '@babel/runtime-corejs3': registry.npmmirror.com/@babel/runtime-corejs3/7.17.9
   antd: registry.npmmirror.com/antd/4.19.5_react-dom@18.0.0+react@18.0.0
   axios: registry.npmmirror.com/axios/0.26.1
-  core-js: registry.npmmirror.com/core-js/3.22.1
+  core-js: registry.npmmirror.com/core-js/3.22.2
   history: registry.npmmirror.com/history/5.3.0
   react: registry.npmmirror.com/react/18.0.0
   react-dom: registry.npmmirror.com/react-dom/18.0.0_react@18.0.0
@@ -90,8 +90,8 @@ devDependencies:
   '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/16.2.1
   '@loadable/component': registry.npmmirror.com/@loadable/component/5.15.2_react@18.0.0
   '@types/loadable__component': registry.npmmirror.com/@types/loadable__component/5.13.4
-  '@types/react': registry.npmmirror.com/@types/react/18.0.5
-  '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.1
+  '@types/react': registry.npmmirror.com/@types/react/18.0.6
+  '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.2
   '@types/react-router-dom': registry.npmmirror.com/@types/react-router-dom/5.3.3
   '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.20.0_eslint@8.13.0+typescript@4.6.3
@@ -3850,7 +3850,7 @@ packages:
     name: '@types/loadable__component'
     version: 5.13.4
     dependencies:
-      '@types/react': registry.npmmirror.com/@types/react/18.0.5
+      '@types/react': registry.npmmirror.com/@types/react/18.0.6
     dev: true
 
   registry.npmmirror.com/@types/mime/1.3.2:
@@ -3907,12 +3907,12 @@ packages:
     version: 1.2.4
     dev: true
 
-  registry.npmmirror.com/@types/react-dom/18.0.1:
-    resolution: {integrity: sha512-jCwTXvHtRLiyVvKm9aEdHXs8rflVOGd5Sl913JZrPshfXjn8NYsTNZOz70bCsA31IR0TOqwi3ad+X4tSCBoMTw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.0.1.tgz}
+  registry.npmmirror.com/@types/react-dom/18.0.2:
+    resolution: {integrity: sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.0.2.tgz}
     name: '@types/react-dom'
-    version: 18.0.1
+    version: 18.0.2
     dependencies:
-      '@types/react': registry.npmmirror.com/@types/react/18.0.5
+      '@types/react': registry.npmmirror.com/@types/react/18.0.6
     dev: true
 
   registry.npmmirror.com/@types/react-router-dom/5.3.3:
@@ -3921,7 +3921,7 @@ packages:
     version: 5.3.3
     dependencies:
       '@types/history': registry.npmmirror.com/@types/history/4.7.11
-      '@types/react': registry.npmmirror.com/@types/react/18.0.5
+      '@types/react': registry.npmmirror.com/@types/react/18.0.6
       '@types/react-router': registry.npmmirror.com/@types/react-router/5.1.17
     dev: true
 
@@ -3931,13 +3931,13 @@ packages:
     version: 5.1.17
     dependencies:
       '@types/history': registry.npmmirror.com/@types/history/4.7.11
-      '@types/react': registry.npmmirror.com/@types/react/18.0.5
+      '@types/react': registry.npmmirror.com/@types/react/18.0.6
     dev: true
 
-  registry.npmmirror.com/@types/react/18.0.5:
-    resolution: {integrity: sha512-UPxNGInDCIKlfqBrm8LDXYWNfLHwIdisWcsH5GpMyGjhEDLFgTtlRBaoWuCua9HcyuE0rMkmAeZ3FXV1pYLIYQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react/-/react-18.0.5.tgz}
+  registry.npmmirror.com/@types/react/18.0.6:
+    resolution: {integrity: sha512-bPqwzJRzKtfI0mVYr5R+1o9BOE8UEXefwc1LwcBtfnaAn6OoqMhLa/91VA8aeWfDPJt1kHvYKI8RHcQybZLHHA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react/-/react-18.0.6.tgz}
     name: '@types/react'
-    version: 18.0.5
+    version: 18.0.6
     dependencies:
       '@types/prop-types': registry.npmmirror.com/@types/prop-types/15.7.4
       '@types/scheduler': registry.npmmirror.com/@types/scheduler/0.16.2
@@ -5308,10 +5308,10 @@ packages:
     requiresBuild: true
     dev: false
 
-  registry.npmmirror.com/core-js/3.22.1:
-    resolution: {integrity: sha512-l6CwCLq7XgITOQGhv1dIUmwCFoqFjyQ6zQHUCQlS0xKmb9d6OHIg8jDiEoswhaettT21BSF5qKr6kbvE+aKwxw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/core-js/-/core-js-3.22.1.tgz}
+  registry.npmmirror.com/core-js/3.22.2:
+    resolution: {integrity: sha512-Z5I2vzDnEIqO2YhELVMFcL1An2CIsFe9Q7byZhs8c/QxummxZlAHw33TUHbIte987LkisOgL0LwQ1P9D6VISnA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/core-js/-/core-js-3.22.2.tgz}
     name: core-js
-    version: 3.22.1
+    version: 3.22.2
     requiresBuild: true
     dev: false
 
