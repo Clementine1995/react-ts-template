@@ -21,7 +21,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.23.0
   '@typescript-eslint/parser': ^5.23.0
   add-asset-html-webpack-plugin: ^5.0.2
-  antd: ^4.20.3
+  antd: ^4.20.4
   autoprefixer: ^10.4.7
   axios: ^0.27.2
   babel-loader: ^8.2.5
@@ -67,7 +67,7 @@ specifiers:
 
 dependencies:
   '@babel/runtime-corejs3': registry.npmmirror.com/@babel/runtime-corejs3/7.17.9
-  antd: registry.npmmirror.com/antd/4.20.3_ef5jwxihqo6n7gxfmzogljlgcm
+  antd: registry.npmmirror.com/antd/4.20.4_ef5jwxihqo6n7gxfmzogljlgcm
   axios: registry.npmmirror.com/axios/0.27.2
   core-js: registry.npmmirror.com/core-js/3.22.5
   history: registry.npmmirror.com/history/5.3.0
@@ -4347,11 +4347,11 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  registry.npmmirror.com/antd/4.20.3_ef5jwxihqo6n7gxfmzogljlgcm:
-    resolution: {integrity: sha512-liZB/OguxPPNnssiR8UH5gjAV3LetsnA8K0G+VBVJkCZsU5QmCDL05d059Nu6iRD7FVg0drSONZQwvWD4pO4nw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/antd/-/antd-4.20.3.tgz}
-    id: registry.npmmirror.com/antd/4.20.3
+  registry.npmmirror.com/antd/4.20.4_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-xtaMNuRvumMXQLsoAwiQRY5rEJVRtJGumby3aPIJdWXwBtZ7eDDuXbT/Uo8xT8rTND0cK5rRQlxMyisCJrZD9Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/antd/-/antd-4.20.4.tgz}
+    id: registry.npmmirror.com/antd/4.20.4
     name: antd
-    version: 4.20.3
+    version: 4.20.4
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
