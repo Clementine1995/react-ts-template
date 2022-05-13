@@ -16,7 +16,7 @@ specifiers:
   '@loadable/component': ^5.15.2
   '@types/loadable__component': ^5.13.4
   '@types/react': ^18.0.9
-  '@types/react-dom': ^18.0.3
+  '@types/react-dom': ^18.0.4
   '@types/react-router-dom': ^5.3.3
   '@typescript-eslint/eslint-plugin': ^5.23.0
   '@typescript-eslint/parser': ^5.23.0
@@ -91,7 +91,7 @@ devDependencies:
   '@loadable/component': registry.npmmirror.com/@loadable/component/5.15.2_react@18.1.0
   '@types/loadable__component': registry.npmmirror.com/@types/loadable__component/5.13.4
   '@types/react': registry.npmmirror.com/@types/react/18.0.9
-  '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.3
+  '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.4
   '@types/react-router-dom': registry.npmmirror.com/@types/react-router-dom/5.3.3
   '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.23.0_c63nfttrfhylg3zmgcxfslaw44
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.23.0_hcfsmds2fshutdssjqluwm76uu
@@ -3810,10 +3810,10 @@ packages:
     version: 1.2.4
     dev: true
 
-  registry.npmmirror.com/@types/react-dom/18.0.3:
-    resolution: {integrity: sha512-1RRW9kst+67gveJRYPxGmVy8eVJ05O43hg77G2j5m76/RFJtMbcfAs2viQ2UNsvvDg8F7OfQZx8qQcl6ymygaQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.0.3.tgz}
+  registry.npmmirror.com/@types/react-dom/18.0.4:
+    resolution: {integrity: sha512-FgTtbqPOCI3dzZPZoC2T/sx3L34qxy99ITWn4eoSA95qPyXDMH0ALoAqUp49ITniiJFsXUVBtalh/KffMpg21Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.0.4.tgz}
     name: '@types/react-dom'
-    version: 18.0.3
+    version: 18.0.4
     dependencies:
       '@types/react': registry.npmmirror.com/@types/react/18.0.9
     dev: true
