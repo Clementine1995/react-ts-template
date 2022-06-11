@@ -41,6 +41,8 @@ module.exports = {
             options: {
               cacheDirectory: true
             }
+            // `.swcrc` can be used to configure swc
+            // loader: 'swc-loader'
           }
         ],
         exclude: /node_modules/

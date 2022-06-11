@@ -10,7 +10,7 @@
     "prod-build": "webpack --config build/webpack.config.js --mode production --env prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dll": "webpack --config build/webpack.config.dll.js",
-    "dev2": "webpack serve --config build2/webpack.dev.js --mode development --hot",
+    "dev2": "webpack serve --config build2/webpack.dev.js --mode development",
     "build2": "webpack --config build2/webpack.prod.js --mode production --env test",
     "commit": "git-cz",
     "lint": "eslint \"src/**\" --max-warnings 0",

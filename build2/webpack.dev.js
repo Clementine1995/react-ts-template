@@ -18,7 +18,7 @@ const devConfig = {
   ],
   devServer: {
     host: 'localhost',
-    port: 3000,
+    port: 8080,
     historyApiFallback: true,
     open: true,
     // hot: true, hot已经自动开启，不需要手动设置了
